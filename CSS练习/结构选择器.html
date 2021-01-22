@@ -14,9 +14,8 @@
         <script src="" async defer></script>
 
         <style>
-            /* 所有后代都改变 */
-            main article h2,
-            article h1{
+            /* 所有artcile的后代（不管几重嵌套）的h2 */
+            main article h2{
                 color: red;
             }
             /* 只是改变自己的直属后代 */
@@ -42,7 +41,10 @@
                  <h1>水电费拉到了开发</h1>
                  <h2>rewrewrewr12313123</h2>
                  <aside>
-                     <h2>312312312</h2>
+                     <h1>312312312</h2>
+                     <div>      
+                         <h2>44444444</h2>
+                     </div>
                  </aside>
                  <h2>rewrewrewr</h2>
              </article>

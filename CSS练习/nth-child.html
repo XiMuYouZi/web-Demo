@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-   
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,47 +14,93 @@
     <link rel="stylesheet" href="">
     <script src="" async defer></script>
     <style>
-        article :nth-child(1){
-           color: red;
-       }
-       /* 直属后代的第一个元素 */
-       article>:nth-child(1){
-           color: green;
-       }
-       article>:nth-child(1){
-           color: green;
-       }
-       article :nth-child(n){
-           color: rgb(201, 24, 201);
-       }
+        /*
+        article :nth-child(1) {
+            color: red;
+        }
+
+         /*直属后代的第一个元素 
+        article>:nth-child(1) {
+            color: green;
+        }
+        
+         /* article的后代，以及后代的后代里面偶数位的元素 
+        article :nth-child(even) {
+            color: rgb(161, 199, 57);
+        }
+
+         /*article :nth-child(n) {
+            color: rgb(201, 24, 201);
+        }
+
+         /*article 所以后代里面的第二个h2元素 
+        article h2:nth-of-type(1) {
+            color: hotpink;
+        }
+        */
+
+        /* 从兄弟节点中从后往前匹配处于某些位置的元素,每个有后代的元素都运用这条规则匹配倒数的第一个元素 */
+        /* article :nth-last-child(-n+1) {
+            color: hotpink;
+         } */
+
+         /* 匹配每个父元素里面的倒数两个子元素，匹配article，aside，div三个父元素的倒数两个子元素 */
+         /* article :nth-last-child(-n+2) {
+            color: hotpink;
+         } */
+
+         /* article自身的后代，和后代里的每个父元素的后代，的倒数第二个元素是h2的才匹配 */
+         article h2:nth-last-child(2) {
+            color: hotpink;
+         } 
+
+         /* article的多重后代（儿子，孙子，重孙）里面的倒数第一个元素是h2类型的 */
+         /* article h2:nth-last-of-type(1) {
+            color: hotpink;
+         } */
+
+         /* 先选前三个li，但是不选第二个 */
+         /* main>ul li:nth-child(-n+3):not(:nth-child(2)){
+             color:greenyellow;
+         } */
     </style>
 
 </head>
 
 <body>
-<p> 
-    :nth-child(an+b) 这个 CSS 伪类首先找到所有当前元素的兄弟元素，然后按照位置先后顺序从1开始排序，选择的结果为CSS伪类:nth-child括号中表达式（an+b）匹配到的元素集合（n=0，1，2，3...）。示例：
+    <p>
+        :nth-child(an+b) 这个 CSS
+        伪类首先找到所有当前元素的兄弟元素，然后按照位置先后顺序从1开始排序，选择的结果为CSS伪类:nth-child括号中表达式（an+b）匹配到的元素集合（n=0，1，2，3...）。示例：
 
-    0n+3 或简单的 3 匹配第三个元素。
-    1n+0 或简单的 n 匹配每个元素。（兼容性提醒：在 Android 浏览器 4.3 以下的版本 n 和 1n 的匹配方式不一致。1n 和 1n+0 是一致的，可根据喜好任选其一来使用。）
-    2n+0 或简单的 2n 匹配位置为 2、4、6、8...的元素（n=0时，2n+0=0，第0个元素不存在，因为是从1开始排序)。你可以使用关键字 even 来替换此表达式。
-    2n+1 匹配位置为 1、3、5、7...的元素。你可以使用关键字 odd 来替换此表达式。
-    3n+4 匹配位置为 4、7、10、13...的元素。
-    <br>
-    <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child">参考链接:nth-child(an+b)</a>
-</p>
+        0n+3 或简单的 3 匹配第三个元素。
+        1n+0 或简单的 n 匹配每个元素。（兼容性提醒：在 Android 浏览器 4.3 以下的版本 n 和 1n 的匹配方式不一致。1n 和 1n+0 是一致的，可根据喜好任选其一来使用。）
+        2n+0 或简单的 2n 匹配位置为 2、4、6、8...的元素（n=0时，2n+0=0，第0个元素不存在，因为是从1开始排序)。你可以使用关键字 even 来替换此表达式。
+        2n+1 匹配位置为 1、3、5、7...的元素。你可以使用关键字 odd 来替换此表达式。
+        3n+4 匹配位置为 4、7、10、13...的元素。
+        <br>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child">参考链接:nth-child(an+b)</a>
+    </p>
 
     <main>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
         <article>
             <h1>水电费拉到了开发</h1>
-            <h2>rewrewrewr12313123</h2>
+            <h2>h2-111111</h2>
             <aside>
-                <h2>312312312</h2>
                 <div>
-                    <a>sfafaf31231</a>
+                    <a>aaaaaaaa11111</a>
+                    <a>aaaaaaaa222222</a>
+                    <a>aaaaaaaa333333</a>
                 </div>
+                <h2>h2-22222</h2>
+                <h2>h2-333333</h2>
             </aside>
-            <h2>rewrewrewr</h2>
+            <h1>rewre321313321wrewr</h2>
+            <h2>h2-444444</h2>
         </article>
     </main>
 
