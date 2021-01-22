@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="" async defer></script>
+
+    <style>
+        /* *的权重：0，继承：NULL，0>NULL，所以span虽然继承自h2的绿色，但是*的权重更高
+        所以最后为红色 */
+       *{
+           color: red;
+       }
+       h2{
+           color: green ;
+       }
+       h2 span{
+           color: grey;
+       }
+       /* 不加important的span是grey */
+       span{
+           color: indigo !important;
+       }
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>sfdsfdsfsfsdf <span>3113132123123</span></h2>
+    </div>
+
+</body>
+
+</html>
