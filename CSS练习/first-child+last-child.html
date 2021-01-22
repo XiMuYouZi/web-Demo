@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="" async defer></script>
+
+    <style>
+        /* article所以后代里面的第一个后代元素，包括后代元素的第一个后代 */
+        article :first-child {
+            color: red;
+        }
+        /* 在上面的基础上限定符合元素的类型必须是H2 */
+        article h2:first-child {
+            color: rgb(37, 177, 67);
+        }
+        /* article后代里面的第一个h2类型的，包括后代的后代 */
+        article h2:first-of-type {
+            color: rgb(172, 127, 30);
+        }
+        article h2:last-child {
+            color: rgb(57, 18, 199);
+        }
+        /* 这个范围最广，但是优先级也比上面的h2带了first-child这种限定符的更低 */
+        article h2{
+            color: rgb(202, 29, 165);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <main>
+        <article>
+
+            <h1>水电费拉到了开发</h1>
+            <h2>rewrewrewr12313123</h2>
+            <aside>
+                <h2>312312312</h2>
+                <div>
+                    <a>555555</a>
+                    <h2>sfafaf31231</h2>
+                </div>
+            </aside>
+            <h2>rewrewrewr</h2>
+        </article>
+    </main>
+
+
+</body>
+
+</html>

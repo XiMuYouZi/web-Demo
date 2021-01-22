@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="" async defer></script>
+
+    <style>
+      /* 有title和id属性的 */
+      h1[title][id] {
+        color: violet;
+      }
+      /* 只有title属性的，且值是ximu */
+      h1[title="ximu"] {
+        color: red;
+      }
+      /* 只有title属性的，且值是ximu开头的 */
+      h1[title^="ximu"] {
+        color: rgb(0, 255, 34);
+      }
+      /* 只有title属性的，且值是com结尾的的 */
+      h1[title$="com"] {
+        color: rgb(138, 75, 209);
+      }
+      /* 只有title属性的，且值中包含ximu即可 */
+      h1[title*="ximu"] {
+        color: rgb(23, 130, 180);
+      }
+      /* 只有title属性的，且值中包含ximu必须是一个单独的单词才可以，前后有空格 */
+      h1[title~="ximu"] {
+        color: rgb(19, 53, 206);
+      }
+       /* 只有title属性的，且值中包含ximu开头，或者”ximu-“开头的 */
+       h1[title|="ximu"] {
+        color: rgb(221, 224, 48);
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <article>
+        <h1 title="ximu" id>水电费拉到了开发</h1>
+        <h1 title>水电费拉到了开发34434</h1>
+        <h1 title="ximu">水电费拉到了开发54545</h1>
+        <h1 title="ximu-123">水电费拉到了开发666666</h1>
+        <h1 title="123 ximu 213">水电费拉到了开发55555555</h1>
+        <h1 title="ximu123">水电费拉到了开发545466665</h1>
+        <h1 title="ximu123.com">水电费拉到了开发59999</h1>
+
+        <h2>rewrewrewr12313123</h2>
+        <aside>
+          <h2>312312312</h2>
+        </aside>
+        <h2>rewrewrewr</h2>
+      </article>
+    </main>
+  </body>
+</html>

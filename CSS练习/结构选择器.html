@@ -14,9 +14,22 @@
         <script src="" async defer></script>
 
         <style>
+            /* 所有后代都改变 */
             main article h2,
             article h1{
                 color: red;
+            }
+            /* 只是改变自己的直属后代 */
+            main article>h2{
+                color: aquamarine;
+            }
+            /* h1的所有兄弟h2元素 */
+            article h1~h2{
+                color: brown;
+            }
+             /* h1的最近的兄弟h2元素 */
+             article h1+h2{
+                color:skyblue;
             }
         </style>
         
@@ -26,7 +39,8 @@
        
          <main>
              <article>
-                 <h1>123123</h1>
+                 <h1>水电费拉到了开发</h1>
+                 <h2>rewrewrewr12313123</h2>
                  <aside>
                      <h2>312312312</h2>
                  </aside>
