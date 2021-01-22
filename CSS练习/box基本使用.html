@@ -20,12 +20,18 @@
            padding: 30px;
        }
        div{
+           /* 居中 */
            margin: 0 auto;
            width: 100px;
-           border: solid 10px green;
-           padding: 10px;
-    
-           
+           border: ridge 10px green;
+           padding: 10px; 
+       }
+       article div{
+            padding: 30px; 
+            width: 200px;
+            height: 200px;
+            /* 限定盒子的大小不改变（如果padding超过了盒子大小还是会改变） */
+            box-sizing: border-box;
        }
     </style>
 </head>
