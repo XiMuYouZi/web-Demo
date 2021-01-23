@@ -1,0 +1,50 @@
+body{
+   .table{
+       display: table;
+        nav{
+            display:table-caption;
+            text-align: center;
+            color: red;
+            caption-side:top;
+            font-size: 20px;
+            font-weight: bolder;
+            margin-bottom: 10px;
+        }
+       section {
+            // 下面的写法等效于section：nth-of-type(1)，也就是第一个section
+            &:nth-of-type(1){
+                display: table-header-group;
+                background-color: rgb(194, 189, 189);
+            }
+            &:nth-of-type(2){
+                display: table-row-group;
+            }
+            &:nth-of-type(3){
+                display: table-footer-group;
+                background-color:#f2f2f2;
+            }
+
+            ul{
+                display: table-row;
+                li{
+                    height: 50px;
+                    text-align: center;
+                    display: table-cell;
+                    border: solid 1px rebeccapurple;
+                    padding: 10px;
+                    vertical-align: middle;
+                }
+                li:nth-child(1){
+                    width: 70px;
+                    
+                }
+                li:nth-child(2){
+                    width: 200px;
+                    
+                }
+
+            }
+
+       }
+   }
+}

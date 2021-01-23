@@ -24,8 +24,8 @@
             color: green;
         }
         
-         /* article的后代，以及后代的后代里面偶数位的元素 
-        article :nth-child(even) {
+         /* article的后代，以及嵌套后代的第2个元素 */
+        article :nth-child(2) {
             color: rgb(161, 199, 57);
         }
 
@@ -33,7 +33,7 @@
             color: rgb(201, 24, 201);
         }
 
-         /*article 所以后代里面的第二个h2元素 
+         /*article 自身后代和嵌套后代里面的第1个元素是h2類型的 
         article h2:nth-of-type(1) {
             color: hotpink;
         }
@@ -50,9 +50,9 @@
          } */
 
          /* article自身的后代，和后代里的每个父元素的后代，的倒数第二个元素是h2的才匹配 */
-         article h2:nth-last-child(2) {
+         /* article h2:nth-last-child(2) {
             color: hotpink;
-         } 
+         }  */
 
          /* article的多重后代（儿子，孙子，重孙）里面的倒数第一个元素是h2类型的 */
          /* article h2:nth-last-of-type(1) {
@@ -91,13 +91,17 @@
             <h1>水电费拉到了开发</h1>
             <h2>h2-111111</h2>
             <aside>
+                <h1>h2-22222</h1>
+                <h2>h2-333333</h2>
                 <div>
                     <a>aaaaaaaa11111</a>
+                    <div>
+                        <h1>12333333</h1>
+                        <em>444444444444</em>
+                    </div>
                     <a>aaaaaaaa222222</a>
                     <a>aaaaaaaa333333</a>
                 </div>
-                <h2>h2-22222</h2>
-                <h2>h2-333333</h2>
             </aside>
             <h1>rewre321313321wrewr</h2>
             <h2>h2-444444</h2>
