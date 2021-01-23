@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            div{
+                width: 200px;
+                height: 200px;
+                background-color: greenyellow;
+                float: right;
+
+            }
+
+            div:nth-child(2){
+                background-color: red;
+                float: left;
+            }
+            main{
+                border: solid 5px gray;
+                width: 300px;
+                /* 触发BFC */
+                /* overflow: hidden; */
+            }
+            /* 这种方式也可以清除float，让父级元素可以根据子元素自适应高度 */
+            main::after{
+                content: "";
+                clear: both;
+                display: block;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <main>
+            <div>1</div>
+            <div>2</div>
+        </main>
+        
+        
+        <script src="" async defer></script>
+    </body>
+</html>
