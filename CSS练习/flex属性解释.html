@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: indigo;
+            width: 300px;
+            height: 100px;
+            font-size: 24px;
+            padding: 10px;
+            box-sizing: border-box;
+            color: white;
+
+
+        }
+
+        article {
+            border: solid 2px gray;
+            width: 800px;
+            height: 1000px;
+            display: flex;
+            /* 主轴的方向  */
+            flex-direction: column;
+            flex-direction: row-reverse;
+            
+            /* 子元素排列不下，就换到下一行或者列（flex-direction的方向是row还是cloumn） */
+            flex-wrap: wrap;
+
+            /* 每个子元素的左右两边的间隔都是相同的，所以2和3的间隔是3的左边的两倍 */
+            justify-content: space-around;
+            /* 首尾元素靠边，中间元素间隔相同距离 */
+            justify-content: space-between;
+            /* 所有元素的间隔都相同 */
+            justify-content: space-evenly;
+            /* justify-content: flex-start; */
+            /* 副轴有多行或者多列元素使，副轴的元素分布方式,优先于align-items，也可以设置上面的 space-evenly这些属性
+                此时主轴是水平，副轴就是垂直*/
+            align-content:space-between;
+
+            /* 副轴的元素对齐方式 */
+            /* align-items: flex-end; */
+
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://juejin.cn/post/6844903911690600456"><h1>align-items和align-content的区别</h1></a>
+
+    <article>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </article>
+</body>
+
+</html>
