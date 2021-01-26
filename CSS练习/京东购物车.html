@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body{
+                padding-left: 100px;
+                padding-top: 100px;
+            }
+            article{
+                position: relative;
+                width: 150px;
+            }
+            div{
+                border: solid 1px gray;
+                text-align: center;
+                background-color: white;
+                height: 30px;
+                line-height: 2em;
+            }
+            article:hover div:nth-child(2){
+                display: block;
+                border: solid 1px cornflowerblue;
+            }
+            article:hover div:nth-child(1){
+                border: solid 1px cornflowerblue;
+                border-bottom: none;
+            }
+            div:nth-child(1){
+                position:absolute;
+                width: 100px;
+                right: 0;
+                z-index: 3;
+            }
+            
+            div:nth-child(2){
+                width: 200px;
+                right: 0;
+                display: none;
+                top: 30px;
+                /* 视图层级必须配合position使用 */
+                position:absolute;
+                z-index: 2;
+            }
+
+        </style>
+    </head>
+    <body>
+        <script src="" async defer></script>
+        <article>
+            <div>购物车</div>
+            <div>购物车没有东西</div>
+        </article>
+    </body>
+</html>

@@ -33,11 +33,10 @@ body header ul li a {
   text-decoration: none;
 }
 body header div.button {
-  float: right;
-  position: absolute;
   background-color: blanchedalmond;
   border: solid 2px white;
   padding: 5px 5px ;
+  position: absolute;
   top: 50%;
   transform: translate(0, -50%);
   right: 10px;
