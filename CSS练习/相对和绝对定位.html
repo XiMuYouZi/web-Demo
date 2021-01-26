@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+
+        <style>
+            p{
+                border: solid 2px blueviolet;
+                padding: 10px;
+                position: relative;
+            }
+            /* 原来的img的位置还是保留了，top left是相对于之前的img位置进行偏移的 */
+            /* img{
+                width: 40px;
+                height: 40px;
+                position: relative;
+                top: 100px;
+                left: 100px;
+            } */
+
+            /* 默认是相对于html进行偏移，之前的位置不会保留 */
+            /* img{
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top: 0;
+                left: 0;
+            } */
+
+            img{
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <p>
+            <img src="2.jpg" alt="">
+            相对定位是相对于自身之前的位置来做偏移，绝对定位默认是相对于html，但是如果
+            父元素有任意的position属性，那么绝对定位就是相对于父元素进行偏移
+            <br>
+            相对定位是相对于自身之前的位置来做偏移，绝对定位默认是相对于html，但是如果
+            父元素有任意的position属性，那么绝对定位就是相对于父元素进行偏移
+            <br>
+            相对定位是相对于自身之前的位置来做偏移，绝对定位默认是相对于html，但是如果
+            父元素有任意的position属性，那么绝对定位就是相对于父元素进行偏移
+        </p>
+
+        <script src="" async defer></script>
+    </body>
+</html>

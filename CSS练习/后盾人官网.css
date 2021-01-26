@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #f3f3f3;
+}
+body header {
+  background-color: #da9234;
+  width: 100%;
+  box-shadow: 0 5px 5px rgba(100, 100, 100, 0.3);
+  border-bottom: solid 5px blueviolet;
+  position: fixed;
+  top: 0;
+}
+body header nav {
+  background-color: #86b122;
+  padding: 30px 10px;
+  height: 20px;
+  width: 90%;
+  position: relative;
+  margin: 0 auto;
+}
+body header ul {
+  float: left;
+}
+body header ul li {
+  display: inline-block;
+  padding: 0 10px;
+}
+body header ul li a {
+  color: white;
+  text-decoration: none;
+}
+body header div.button {
+  float: right;
+  position: absolute;
+  background-color: blanchedalmond;
+  border: solid 2px white;
+  padding: 5px 5px ;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 10px;
+}
+body main {
+  width: 100%;
+  background-color: red;
+  margin-top: 20px;
+  position: relative;
+  top: 80px;
+  margin-bottom: 200px;
+  z-index: -1;
+}
+body main article {
+  width: 70%;
+  background-color: cornflowerblue;
+}
+body main article ul li {
+  padding: 5px 10px;
+  border-bottom: solid 1px #f3f3f3;
+}
+body main aside {
+  width: 28% ;
+  background-color: darkcyan;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  position: absolute;
+}
+body footer {
+  border-top: solid 2px green;
+  background-color: gray;
+  height: 50px;
+  margin-top: 20px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  bottom: 0px;
+  position: fixed;
+  width: 100%;
+}
+body footer p {
+  text-align: center;
+  background-color: yellow;
+  margin: 0 auto;
+}
