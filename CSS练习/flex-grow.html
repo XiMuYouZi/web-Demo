@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: indigo;
+            width: 100px;
+            height: 100px;
+            font-size: 24px;
+            padding: 10px;
+            color: white;
+
+            box-sizing: border-box;
+            background-clip: content-box;
+            border: solid 1px green;
+        }
+
+        /* flex-grow是用来分配父元素主轴方向的剩余空间的，剩余大小 = 800 - 100*4 = 400 */
+
+        /* 保持原来大小 */
+        div:nth-child(1){
+            flex-grow: 0;
+        }
+
+        /* 分配400 * 1/4 = 100 */
+        div:nth-child(2){
+            flex-grow: 1;
+        }
+        /* 分配400 * 3/4 = 300，所以第三个div的大小 = 100 + 300 = 400 */
+
+        div:nth-child(3){
+            flex-grow: 3;
+        }
+
+        article {
+            border: solid 2px gray;
+            width: 800px;
+            height: 1000px;
+            display: flex;
+            /* 主轴的方向  */
+            flex-direction: row;
+    
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+
+    <article>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+
+    </article>
+</body>
+
+</html>

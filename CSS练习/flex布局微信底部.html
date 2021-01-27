@@ -1,55 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
         }
-        body{
+
+        body {
             background-color: #cccccc;
             height: 100vh;
             display: flex;
             flex-direction: column;
-        
+
         }
-        main{
+
+        main {
             flex: 1;
         }
-        footer{
+
+        footer {
             background-color: red;
             height: 60px;
-            background:linear-gradient(to top, #f3f3f3, #ccc, #f3f3f3);
+            background: linear-gradient(to top, #f3f3f3, #ccc, #f3f3f3);
             display: flex;
             justify-content: space-evenly;
         }
-        footer div{
+
+        footer div {
             flex: 1;
-            line-height: 4em;
-            text-align: center;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+
         }
-        div:nth-of-type(n+2){
+
+        div:nth-of-type(n+2) {
             border-left: solid 1px gray;
         }
-      
+        li{
+            list-style: none;
 
-
+            flex: 0 0 50px;
+            /* li本身是flex的元素，但是自己也是flex容器 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: solid 1px gray;
+        }
+        li:last-child{
+            border-bottom: none;
+        }
+    
+     
+        ul{
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            border: solid 1px gray;
+            width: 92%;
+            margin-bottom: 5px;
+            display: none;
+            
+        }
+        div:hover ul{
+            display:flex;
+            
+        }
+        h3{
+            /* h3和ul是div这个flex盒子的内容，下面的代码标示h3不缩放不拉伸，主轴60px，也就是高度 */
+            flex:0 0 60px;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            
+        }
+       
     </style>
 </head>
+
 <body>
     <main>
         1111
     </main>
     <footer>
-        <div>123</div>
-        <div>333</div>
-        <div>444</div>
-        <div>555</div>
-        <div>666</div>
-
+        <div>
+            <h3>
+                1111
+            </h3>
+            <ul>
+                <li>sss</li>
+                <li>ddd</li>
+                <li>fff</li>
+            </ul>
+        </div>
+        <div>
+            <h3>
+                2222
+            </h3>
+            <ul>
+                <li>sss</li>
+                <li>ddd</li>
+                <li>fff</li>
+            </ul>
+        </div>
+        <div>
+            <h3>
+                3333
+            </h3>
+            <ul>
+                <li>sss</li>
+                <li>ddd</li>
+                <li>fff</li>
+                <li>sss</li>
+                <li>ddd</li>
+                <li>fff</li>
+            </ul>
+        </div>
+        <div>
+            <h3>
+                4444
+            </h3>
+            <ul>
+                <li>sss</li>
+                <li>ddd</li>
+                <li>fff</li>
+                <li>sss</li>
+                <li>ddd</li>
+                <li>fff</li>
+                <li>sss</li>
+                <li>ddd</li>
+                <li>fff</li>
+            </ul>
+        </div>
+        <div>
+            <h3>
+                555
+            </h3>
+            <ul>
+                <li>sss</li>
+                <li>ddd</li>
+                <li>fff</li>
+            </ul>
+        </div>
     </footer>
 </body>
+
 </html>
