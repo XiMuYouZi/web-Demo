@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main {
+            display: flex;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #main>article {
+            flex: 1;
+            order: 2;
+            background-color: red;
+        }
+
+        #main>nav {
+            flex: 9;
+            order: 1;
+            background-color: green;
+        }
+
+        #main>aside {
+            width: 200px;
+            order: -1;
+            background-color: hotpink;
+        }
+
+        body article:not(:nth-child(1)) {
+            border: solid 2px gray;
+            height: 400px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        body article:not(:nth-child(1)) section{
+            flex: 1;
+            background-color: royalblue;
+            padding: 10px;
+            background-clip: content-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        body article:not(:nth-child(1)) section div{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 30px;
+        }
+        body article:not(:nth-child(1)) section span{
+            background-color: black;
+            color: white;
+            flex-basis: 30px;
+            cursor: pointer;
+        }
+       
+
+    </style>
+
+    <script>
+        function up(el){
+            let order = getComputedStyle(el.parentElement, null).order
+            // 已经改变了order，但是没起作用，原因未知
+            el.parentElement.order = order * 1 - 1
+            console.log(el.parentElement.order);
+        }
+    </script>
+</head>
+
+<body>
+    <h3>
+        order 属性规定了弹性容器中的可伸缩项目在布局时的顺序。元素按照 order 属性的值的增序进行布局。拥有相同 order 属性值的元素按照它们在源代码中出现的顺序进行布局。
+        初始值 0
+    </h3>
+    <br>
+    <br>
+
+    <hr>
+    <hr>
+    <header>32132133rrrr</header>
+    <div id='main'>
+        <article>1111</article>
+        <nav>22222</nav>
+        <aside>3333</aside>
+    </div>
+    <footer>sdfdsfafasf34</footer>
+
+    <br>
+
+    <hr>
+    <hr>
+
+    <br>
+
+    <article>
+        <section>
+            <div>1111</div>
+            <span onclick="up(this)">up</span>
+        </section>
+        <section>
+            <div>2222</div>
+            <span onclick="up(this)">up</span>
+        </section>
+        <section>
+            <div>3333</div>
+            <span class="up" onclick="up(this)">up</span>
+        </section>
+    </article>
+</body>
+
+</html>

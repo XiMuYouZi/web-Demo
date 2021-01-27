@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            background-color: indigo;
+            height: 100px;
+            font-size: 24px;
+            padding: 10px;
+            color: white;
+
+            box-sizing: border-box;
+            background-clip: content-box;
+            border: solid 1px green;
+
+            /* flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 100px; */
+            /* 这是缩写，相当于上面三句的合并 */
+            /* flex: 1 1 100px; */
+        }
+
+
+        div:nth-child(1) {
+            flex: 1 1 100px;
+        }
+
+
+        div:nth-child(2) {
+            flex: 0 1 100px;
+
+        }
+
+        div:nth-child(3) {
+            flex: 1 0 100px;
+
+        }
+
+        article {
+            border: solid 2px gray;
+            width: 400px;
+            height: 1000px;
+            display: flex;
+            /* 主轴的方向  */
+            flex-direction: row;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>
+        <p>
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 100px;
+        </p>
+        <p>
+            这是缩写，相当于上面三句的合并
+            flex: 1 1 100px;
+        </p>
+        <p>
+            如果子元素的总宽度小于父元素宽度，flex-grow生效，flex-shrink失效
+            <p>
+                子元素总宽度大于于父元素宽度，flex-grow失效，flex-shrink生效
+            </p>
+        </p>
+    </h3>
+    <article>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </article>
+</body>
+
+</html>
