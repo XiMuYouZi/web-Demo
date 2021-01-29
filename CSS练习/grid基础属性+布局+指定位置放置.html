@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: greenyellow;
+            padding: 10px;
+            background-clip: content-box;
+            box-sizing: border-box;
+            border: solid 1px slateblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main{
+            border: solid 2px springgreen;
+            display: grid;
+            height:  300px;
+
+            /* 两行：每行50%的main高度，5列：每列20%的main宽度 */
+            /* grid-template-rows: repeat(2, 50%);
+            grid-template-columns: repeat(5, 20%); */
+
+             /* 四行：第一行100，第二行50，第三行100，第四行50，
+             10列：第一列40，第二列80，后面一次类推 */
+            /* grid-template-rows: repeat(2, 100px 50px);
+            grid-template-columns: repeat(5, 40px 80px); */
+            /* 可以百分比，数值混合使用 */
+            /* grid-template-columns: repeat(5, 10% 80px); */
+
+            /* 自动填充满main，每行单元格宽度100，高度50，直到放不下换到下一行 */
+            /* grid-template-columns: repeat(auto-fill,100px);
+            grid-template-rows: repeat(auto-fill,50px); */
+
+            /* 自动填充满main，一共6行10列，各自平分main的高度和宽度*/
+            /* grid-template-columns: repeat(6,1fr);
+            grid-template-rows: repeat(10,1fr); */
+
+            /* 分成3列，宽度分别是main的宽度的1/6,2/6,3/6，高度也是类似划分 */
+            /* grid-template-columns: 1fr 2fr 3fr ;
+            grid-template-rows: 1fr 2fr 3fr 4fr 5fr 6fr; */
+
+            /* 每行高度在50-100px之间波动 */
+            grid-template-rows: repeat(4, minmax(50px, 100px));
+            grid-template-columns: repeat(5, 100px);
+
+            /* 行，列间隔 */
+            /* row-gap: 10px;
+            column-gap: 20px; */
+            gap: 10px 20px;
+            
+            /* 默认是row排列，可以改成column，dense可以自动填充布局中出现的空格 */
+            /* grid-auto-flow:column dense; */
+        }
+
+        /* 把第一个1放到第二行的8的位置 */
+        div:first-child{
+            background-color: violet;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+        div:nth-child(2){
+            background-color: turquoise;
+            grid-row-start: 3;
+            grid-row-end: 5;
+            grid-column-start: 4;
+            grid-column-end: 5;
+        }
+    </style>
+</head>
+<body>
+    <h2>
+        快速写法div{$}*8
+    </h2>
+    <main>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+     
+    </main>
+</body>
+</html>

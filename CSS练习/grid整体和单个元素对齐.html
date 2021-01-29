@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: greenyellow;
+            padding: 10px;
+            background-clip: content-box;
+            box-sizing: border-box;
+            border: solid 1px slateblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+        }
+
+        main{
+            border: solid 2px springgreen;
+            display: grid;
+            grid-template-columns: repeat(4,60px);
+            grid-template-rows: repeat(3,100px);
+
+            height: 600px;
+
+            /* 当grid的全部子元素不能占满父元素mian的水平或者垂直方向的时候，
+            可以用下面的方式来调整布局 */
+
+            /* 水平方向整体分布 */
+            /* justify-content: space-between; */
+            /* 垂直方向整体分布 */
+            /* align-content: space-evenly; */
+
+            /* 简写，和上面的相同 ，两个参数分别是：垂直和水平方向的控制方式*/
+            /* place-content: space-evenly space-between; */
+
+            /* 控制每个元素的排列方式 */
+            justify-items: end;
+            align-items: center;
+            /* 简写 */
+            place-items: center end;
+            
+        }
+
+        /* 控制每个元素的位置*/
+        div:first-child{
+            align-self: start;
+            justify-self: center;
+            /* 简写 */
+            place-self: start center;
+        }
+        div:nth-child(2){
+            align-self: center;
+            justify-self: center;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+     
+    </main>
+</body>
+</html>

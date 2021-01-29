@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header,  nav ,main, footer{
+            background-color: rebeccapurple;
+            padding: 3px;
+            background-clip: content-box;
+            box-sizing: border-box;
+            border: solid 3px green;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        logo{
+            background-color: red;
+            padding: 3px;
+            background-clip: content-box;
+            box-sizing: border-box;
+            border: solid 3px blue;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        logo div:nth-of-type(1){
+            writing-mode: vertical-lr;
+            top: 70px;
+            left: 10px;
+            position:absolute;
+        }
+
+        logo div:nth-of-type(2){
+            position:absolute;
+            top: 10px;
+            left: 70px;
+        }
+        logo div:nth-of-type(3){
+            writing-mode: vertical-lr;
+            top: 70px;
+            right: 10px;
+            position:absolute;
+        }
+        logo div:nth-of-type(4){
+            position:absolute;
+            left: 70px;
+            bottom:  10px;
+        }
+
+        
+        body{
+            border: solid 2px springgreen;
+            display: grid;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-rows: 200px 1fr 60px;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: "logo      header"
+                                 "nav         main"
+                                 "footer      footer" ;
+        }
+
+        /* logo矩形的四条边分别是：
+        左边：logo-start
+        上边：logo-start
+        右边：logo-end
+        下边：logo-end */
+        header{
+            grid-area: nav-start/nav-end/main-end/main-end;
+        }
+        
+      
+
+     
+        
+    </style>
+</head>
+<body>
+    <logo>
+        <h1>logo</h1>
+        <div>logo-start</div>
+        <div>logo-start</div>
+        <div>logo-end</div>
+        <div>logo-end</div>
+    </logo>
+    <header>header</header>
+
+    
+
+</body>
+</html>

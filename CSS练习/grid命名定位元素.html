@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: greenyellow;
+            padding: 10px;
+            background-clip: content-box;
+            box-sizing: border-box;
+            border: solid 1px slateblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main{
+            border: solid 2px springgreen;
+            display: grid;
+            /* r1-s:第一row的start，r1-e:第一row的end，c1-s:第一cloumn的start */
+            grid-template-rows: [r1-s] 100px [r1-e r2-s]  100px [r2-e r3-s] 100px [r3-e] ;
+            grid-template-columns: [c1-s] 100px [c1-e c2-s]  100px [c2-e c3-s] 100px [c3-e];
+            
+        }
+
+        /* 把第一个1放到第二行的6的位置 */
+        div:first-child{
+            background-color: violet;
+            grid-row-start: r2-s;
+            grid-row-end: r2-e;
+            grid-column-start: c3-s;
+            grid-column-end: c3-e;
+        }
+        div:nth-child(2){
+            
+        }
+    </style>
+</head>
+<body>
+    <h2>
+        快速写法div{$}*8
+    </h2>
+    <main>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+   
+     
+    </main>
+</body>
+</html>
