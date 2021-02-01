@@ -2,7 +2,7 @@
   <div id="app">
     <nice-header v-if="!$route.meta.isLogin"></nice-header>
     <router-view />
-    <player-bar v-if="!$route.meta.isLogin"></player-bar>
+    <player-bar  v-if="!$route.meta.isLogin"></player-bar>
     <nice-footer v-if="!$route.meta.isLogin"></nice-footer>
     <back-top v-if="!$route.meta.isLogin"></back-top>
     <div class="fly bg-fly-circle1"></div>

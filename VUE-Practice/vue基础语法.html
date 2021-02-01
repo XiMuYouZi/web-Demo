@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="vue.js" ></script>    
+        
+        <style>
+            .color{
+                color: red;
+            }
+            .line{
+                text-decoration: underline;
+            }
+            .des{
+                background-color: black;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <p>v-cloak:在属性没有解析出来之前不展示，不然界面上面会短暂的出现{{message}}字样</p>
+
+        <br>
+        <hr>
+        
+        <div id="app" v-cloak>
+            <h3 class="des">变量赋值</h3>
+            <h4>{{message}}</h4>
+          <hr>
+
+          v-for属性
+            <ul>
+                <li v-for="item in movies">{{item}}</li>
+            </ul>
+            <hr>
+
+            <h3 class="des">v-on属性</h3>
+            <h3>{{counter}}</h3>
+            <button v-on:click="add">+</button>
+            <button @click="sub">-</button>
+            <hr>
+
+            <h3 class="des">v-bind的缩写，动态绑定属性</h3>
+            <br>
+            <a :href="url">baidu</a>
+            <hr>
+
+            <h3 class="des">动态绑定class改变css样式，true的时候加载class，false的时候就卸载class</h3>
+            <p :class="{color:isRed, line:isLine}">{{message}}</p>
+            <h5 class="des">也可以直接调用一个函数</h3>
+            <p :class="changeClass()">1312313esdsdsd</p>
+            <button @click="changeColor">改变color</button>
+            <button @click="changeLine">改变line</button>
+            <h5 class="des">传递参数，如果是字符串记得加单引号，$event传递系统的鼠标事件</h5>
+            <button @click="testClick('dsff', $event)">传递参数</button>
+
+            <hr>
+
+            <h3 class="des">动态绑定style，注意30px要用单引号包起来，不然被解析为变量</h3>
+            <p :style="{fontSize:'30px',color:'green'}">123123213</p>
+            <h5 class="des">也可以直接调用一个函数</h3>
+            <p :style="changeStyle()">123123213</p>
+            <hr>
+
+            <h3 class="des">计算属性</h3>
+            <p>{{fullName}}s</p>
+            <hr>
+
+            <h3 class="des">click修饰符</h3>
+            <p>
+                <ul>
+                    <li>@click.stop: 阻止事件冒泡</li>
+                    <li>@click.prevent: 阻止默认动作，比如submit默认提交表单</li>
+                    <li>@click.prevent: 只会触发一次</li>
+                    <li></li>
+                </ul>
+                <h5 class="des">只有按下a键才会触发方法</h5>
+                <input type="text" @keyup.a="keyUP">
+            </p>
+            <hr>
+
+            <h3 class="des">v-if/v-else</h3>
+            <div>
+                <span v-if="isPhone">
+                    <label for="">手机登录</label>
+                </span>
+                <span v-else>
+                    <label for="">邮箱登录</label>
+                </span >
+                <button @click="isPhone = !isPhone">切换登录类型</button>
+            </div>
+
+        </div>
+        
+        <script>
+
+            const app = new Vue({
+                el:'#app',
+                data:{
+                    message:"是的是的多所所多",
+                    movies:["11313","水电费第三方是", 1232131231],
+                    counter:0,
+                    url:"https://www.baidu.com",
+                    isRed:true,
+                    isLine:true,
+                    firstName:"sdsd",
+                    lastName:"12133",
+                    isPhone:true
+                },
+             
+                methods: {
+
+                    keyUP(event){
+                        console.log(event);
+                    },
+                    add(){
+                        this.counter++
+                    },
+                    sub(){
+                        this.counter--
+                    },
+                    changeColor(){
+                        this.isRed = !this.isRed
+                    },
+                    changeLine(){
+                        this.isLine = !this.isLine
+                    },
+                    changeClass(){
+                        return {color:this.isRed, line:this.isLine}
+                    },
+                    changeStyle(){
+                        return {fontSize:'30px',color:'blue'}
+                    },
+                    testClick(para1,para2){
+                        console.log(para1,para2);
+                    }
+                },
+                computed:{
+                    fullName(){
+                        return this.firstName + " " + this.lastName
+                    },
+                    // 完整写法
+                    // fullName:{
+                    //     set(newVaule){
+                    //         console.log("设置的新值为：" + newVaule);
+                    //     },
+                    //     get(){
+                    //         return this.firstName + "--" + this.lastName
+                    //     }
+                    // }
+
+
+                },
+            })
+        </script>
+    </body>
+</html>

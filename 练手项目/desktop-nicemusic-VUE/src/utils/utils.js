@@ -95,6 +95,7 @@ export default {
       if (s < 10) {
         s = '0' + s
       }
+        
       formatTime = m + ':' + s
     }
     return formatTime
