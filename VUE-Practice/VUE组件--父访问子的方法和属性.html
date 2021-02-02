@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Vue组件</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="vue.js"></script>
+    <style>
+      .title {
+        background-color: black;
+        color: white;
+      }
+      .subTitle {
+        color: salmon;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="parent" v-cloak>
+      <cpn ref="child"></cpn>
+      <button @click="click">调用子组件方法</button>
+    </div>
+
+    <template id="child">
+      <div>
+        <h3>{{cmessage}}</h3>
+      </div>
+    </template>
+
+    <script>
+      const cpn = {
+        template: "#child",
+        props:{
+            cmessage:{
+                type:String,
+                default:"123131"
+            }
+        },
+        data() {
+          return {};
+        },
+        methods: {
+          showMsg(){
+            console.log("调用了子组件方法：dddddddddd")
+          }
+        },
+      };
+
+      const app = new Vue({
+        el: "#parent",
+        data: {
+          message: "fdsfasdfadsf",
+          movies: ["fsdfsfdf", "12131231", "1231221asdsd", "sdsdd"],
+        },
+        components: {
+          cpn,
+        },
+        methods: {
+          click(){
+            this.$refs.child.showMsg()
+            console.log(this.$refs.child.cmessage)
+          }
+        },
+      });
+    </script>
+  </body>
+</html>

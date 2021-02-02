@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Vue组件</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="vue.js"></script>
+    <style>
+      .title {
+        background-color: black;
+        color: white;
+      }
+      .subTitle {
+        color: salmon;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="parent" v-cloak>
+        <!-- 把props里面的每个对象绑定到想从父组件获取值得属性上面 -->
+      <cpn :cmovies="movies" :cmessage="message"></cpn>
+    </div>
+
+    <template id="child">
+      <div>
+        <h3>{{cmessage}}</h3>
+        <p>{{cmovies}}</p>
+      </div>
+    </template>
+
+    <script>
+      const cpn = {
+        template: "#child",
+        // 在子组件里面定义一个数组，里面放的是接受从父组件传递的数据对应的对象
+        // props: ["cmovies", "cmessages"],
+        props:{
+            cmovies:{
+                type:Array,
+                default:[],
+                validator(value){
+                    return value.indexOf("123") != -1
+                }
+            },
+            cmessage:{
+                type:String,
+                default:"123131"
+            }
+
+        },
+        data() {
+          return {};
+        },
+      };
+      const app = new Vue({
+        el: "#parent",
+        data: {
+          message: "fdsfasdfadsf",
+          movies: ["fsdfsfdf", "12131231", "1231221asdsd", "sdsdd"],
+        },
+        components: {
+          cpn,
+        },
+      });
+    </script>
+  </body>
+</html>

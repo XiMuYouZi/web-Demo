@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>vue基础语法</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
@@ -23,6 +23,9 @@
             .des{
                 background-color: black;
                 color: white;
+            }
+            .subTitle{
+                color:salmon;
             }
         </style>
     </head>
@@ -44,16 +47,23 @@
             </ul>
             <hr>
 
+
+
             <h3 class="des">v-on属性</h3>
             <h3>{{counter}}</h3>
             <button v-on:click="add">+</button>
             <button @click="sub">-</button>
             <hr>
 
-            <h3 class="des">v-bind的缩写，动态绑定属性</h3>
-            <br>
+
+
+            <h3 class="des">v-bind的缩写为冒号，动态绑定属性</h3>
+            <pre>&lt;a :href="url"&gt;baidu&lt;/a&gt;</pre>
+
             <a :href="url">baidu</a>
             <hr>
+
+
 
             <h3 class="des">动态绑定class改变css样式，true的时候加载class，false的时候就卸载class</h3>
             <p :class="{color:isRed, line:isLine}">{{message}}</p>
@@ -63,8 +73,9 @@
             <button @click="changeLine">改变line</button>
             <h5 class="des">传递参数，如果是字符串记得加单引号，$event传递系统的鼠标事件</h5>
             <button @click="testClick('dsff', $event)">传递参数</button>
-
             <hr>
+
+
 
             <h3 class="des">动态绑定style，注意30px要用单引号包起来，不然被解析为变量</h3>
             <p :style="{fontSize:'30px',color:'green'}">123123213</p>
@@ -72,9 +83,13 @@
             <p :style="changeStyle()">123123213</p>
             <hr>
 
+
+
             <h3 class="des">计算属性</h3>
             <p>{{fullName}}s</p>
             <hr>
+
+
 
             <h3 class="des">click修饰符</h3>
             <p>
@@ -84,10 +99,12 @@
                     <li>@click.prevent: 只会触发一次</li>
                     <li></li>
                 </ul>
-                <h5 class="des">只有按下a键才会触发方法</h5>
+                <h4 class="subTitle">只有按下a键才会触发方法</h5>
                 <input type="text" @keyup.a="keyUP">
             </p>
             <hr>
+
+
 
             <h3 class="des">v-if/v-else</h3>
             <div>
@@ -99,6 +116,76 @@
                 </span >
                 <button @click="isPhone = !isPhone">切换登录类型</button>
             </div>
+            <hr>
+
+
+
+            <h3 class="des">v-model:radio,使用v-model可以省略name属性</h3>
+            <label for="male"></label>
+                <input type="radio"  id="male" value="男" v-model="sex">男
+            </label>
+            <label for="female">
+                <input type="radio" id="female" value="女" v-model="sex">女
+            </label>
+            <p>性别：{{sex}} </p>
+            <hr>
+
+
+
+            <h3 class="des">v-model:checkbox</h3>
+            <h4 class="subTitle">单个checkbox</h4>
+            <label for="check">
+                <input type="checkbox" v-model="checked" id="check">同意协议
+            </label>
+            <p>是否同意协议：{{checked}} </p>
+
+            <h4 class="subTitle">多个checkbox</h4>
+            <label><input type="checkbox" v-model="hobbies1" value="蓝球">蓝球</label>
+            <label><input type="checkbox" v-model="hobbies1" value="羽毛球">羽毛球</label>
+            <label><input type="checkbox" v-model="hobbies1" value="足球">足球</label>
+            <p>选中的爱好：{{hobbies1}} </p>
+
+            <h4 class="subTitle">动态值绑定</h4>
+            <label v-for="item in originFruits" :for="item">
+                <input type="checkbox" :value="item" :id="item" v-model="hobbies2"> {{item}}
+            </label>
+            <p>选中的爱好：{{hobbies2}} </p>
+            <hr>
+
+
+
+            <h3 class="des">v-model:select</h3>
+            <h4 class="subTitle">select选择一个值</h4>
+            <select v-model="fruit" >
+                <option value="苹果">苹果</option>
+                <option value="栗子">栗子</option>
+                <option value="香蕉">香蕉</option>
+            </select>
+            <p>你选择的水果是：{{fruit}} </p>
+
+            <h4 class="subTitle">select选择多个值</h4>
+            <select v-model="fruits" multiple>
+                <option value="苹果">苹果</option>
+                <option value="栗子">栗子</option>
+                <option value="香蕉">香蕉</option>
+            </select>
+            <p>你选择的水果是：{{fruits}} </p>
+            <hr>
+
+            <h3 class="des">v-model修饰符</h3>
+            <h4 class="subTitle">lazy: 输入框失去焦点或者回车才会更新v-model绑定的值</h4>
+            <input type="text" name="" id="" v-model.lazy="inputValue">
+            <p>输入的值：{{inputValue}}</p>
+
+            <h4 class="subTitle">number: 输入框默认把所以输入值都当做字符串处理，number可以让输入数字的时候当做数字处理</h4>
+            <input type="number" name="" id="" v-model.number="inputValue1">
+            <p>值类型：{{typeof inputValue1}}</p>
+
+            <h4 class="subTitle">trim:去掉输入值的左右空格</h4>
+            <input type="text" name="" id="" v-model.trim="inputValue2">
+            <p>输入的值：{{inputValue2}}</p>
+
+
 
         </div>
         
@@ -115,7 +202,20 @@
                     isLine:true,
                     firstName:"sdsd",
                     lastName:"12133",
-                    isPhone:true
+                    isPhone:true,
+                    sex:'男',
+                    checked:true,
+                    fruit:'苹果',
+                    fruits:[],
+                    hobbies1:[],
+                    hobbies2:[],
+                    originFruits:["葡萄","草莓","西瓜"],
+                    inputValue:'',
+                    inputValue1:1,
+                    inputValue2:"",
+
+
+
                 },
              
                 methods: {

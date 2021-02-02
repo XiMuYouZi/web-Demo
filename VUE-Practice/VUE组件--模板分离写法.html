@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Vue组件</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="vue.js"></script>
+    <style>
+      .title {
+        background-color: black;
+        color: white;
+      }
+      .subTitle {
+        color: salmon;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3 class="subTitle">
+      为什么compent的data必须定义为函数，再return一个对象呢？
+      因为组件需要复用，这样每次使用data就是调用函数返回一个新的对象，可以让各个compent的data独立
+    </h3>
+
+    <div id="app" v-cloak>
+      <my-cpn></my-cpn>
+    </div>
+
+    <template id="mycpn">
+      <div>
+        <h2>标题</h2>
+        <p>组件内容组件内容组件内容</p>
+        <p>{{message}}</p>
+      </div>
+    </template>
+    <template id="childcpn">
+      <div>
+        <h4>子组件标题</h4>
+        <p>子组件内容组件内容组件内容</p>
+      </div>
+    </template>
+
+    <script>
+      const app = new Vue({
+        el: "#app",
+        components: {
+          "my-cpn": {
+            template: "#mycpn",
+            data() {
+              return {
+                message: "hello world",
+              };
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

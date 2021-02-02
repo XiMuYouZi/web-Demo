@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vue 基础知识</title>
+    <title>购物车+点击变色案例</title>
     <script src="vue.js"></script>
     <style>
       .red {
         background-color: red;
       }
-      thead>tr{
-          height: 50px;
-          background-color: #f3f3f3;
+      thead > tr {
+        height: 50px;
+        background-color: #f3f3f3;
       }
-      table{
+      table {
         border-collapse: collapse;
       }
-      td{
-          padding: 5px 20px;
+      td {
+        padding: 5px 20px;
       }
     </style>
   </head>
@@ -48,55 +48,49 @@
         </li>
       </ul>
 
-
-      <hr>
+      <hr />
       <h3>案例：购物车</h3>
       <table border="1">
-          <thead>
-              <tr>
-                  <td></td>
-                  <td>书籍名称</td>
-                  <td>出版日期</td>
-                  <td>价格</td>
-                  <td>购买数量</td>
-                  <td>操作</td>
-              </tr>
-          </thead>
+        <thead>
+          <tr>
+            <td></td>
+            <td>书籍名称</td>
+            <td>出版日期</td>
+            <td>价格</td>
+            <td>购买数量</td>
+            <td>操作</td>
+          </tr>
+        </thead>
 
-          <tbody>
-            <tr v-for="book in books">
-                <td>{{book.id}}</td>
-                <td>{{book.name}}</td>
-                <td>{{book.date}}</td>
-                <!-- 使用函数实现 -->
-                <!-- <td>{{finalPrice(book.price)}}</td> -->
-                <!-- 使用过滤器也可以实现相同功能，自动把book.price当做参数传给后面的过滤器 -->
-                <td>{{ book.price |  finalPrice}}</td>
-                
-                <td>
-                    <button @click="subCount(book.id)" :disabled="book.count <= 0">-</button>
-                    {{book.count}}
-                    <button @click="addCount(book.id)">+</button>
-                </td>
-                <td>
-                    <button @click="remove(book.id)">移除</button>
-                </td>
-            </tr>
-          </tbody>
+        <tbody>
+          <tr v-for="book in books">
+            <td>{{book.id}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.date}}</td>
+            <!-- 使用函数实现 -->
+            <!-- <td>{{finalPrice(book.price)}}</td> -->
+            <!-- 使用过滤器也可以实现相同功能，自动把book.price当做参数传给后面的过滤器 -->
+            <td>{{ book.price | finalPrice}}</td>
 
-          <tfoot>
-              <tr >
-                  <td colspan="6">
-                    总价格: {{finalPrice(this.totalPrice)}}
-                  </td>
-                
-              </tr>
-              
-          </tfoot>
+            <td>
+              <button @click="subCount(book.id)" :disabled="book.count <= 0">
+                -
+              </button>
+              {{book.count}}
+              <button @click="addCount(book.id)">+</button>
+            </td>
+            <td>
+              <button @click="remove(book.id)">移除</button>
+            </td>
+          </tr>
+        </tbody>
 
+        <tfoot>
+          <tr>
+            <td colspan="6">总价格: {{finalPrice(this.totalPrice)}}</td>
+          </tr>
+        </tfoot>
       </table>
-    
-
     </div>
 
     <script>
@@ -110,53 +104,63 @@
           },
           movies: ["1231", "sdffsdf", "sfd212", "sf232dfas"],
           currentIndex: 0,
-          books:[
-              {"id":1, "name":"算法导论", "date":"2008/9/10", "price":89,"count":0},
-              {"id":2,"name":"Unix编程艺术", "date":"2004/6/12", "price":125,"count":0},
-              {"id":3,"name":"编程珠玑", "date":"2014/7/5", "price":189,"count":0},
-              {"id":4,"name":"代码大全", "date":"1908/5/30", "price":851,"count":0},
-          ],
-
-        },
-        computed:{
-            totalPrice(){
-             let price = this.books.reduce((acc,cur)=> 
-                acc + cur.price * cur.count,0 
-             )
-             return price
-           }
-        },
-        filters:{
-            finalPrice(price){
-                return "￥"+price.toFixed(2)
+          books: [
+            { id: 1, name: "算法导论", date: "2008/9/10", price: 89, count: 0 },
+            {
+              id: 2,
+              name: "Unix编程艺术",
+              date: "2004/6/12",
+              price: 125,
+              count: 0,
             },
+            { id: 3, name: "编程珠玑", date: "2014/7/5", price: 189, count: 0 },
+            {
+              id: 4,
+              name: "代码大全",
+              date: "1908/5/30",
+              price: 851,
+              count: 0,
+            },
+          ],
+        },
+        computed: {
+          totalPrice() {
+            let price = this.books.reduce(
+              (acc, cur) => acc + cur.price * cur.count,
+              0
+            );
+            return price;
+          },
+        },
+        filters: {
+          finalPrice(price) {
+            return "￥" + price.toFixed(2);
+          },
         },
         methods: {
-            finalPrice(price){
-                return "￥"+price.toFixed(2)
-            },
-            addCount(id,event){
-                this.books.map(item => {
-                    if (item.id===id){
-                        item.count++
-                    }
-                })
-            },
-            subCount(id,event){
-                this.books.map(item => {
-                    if (item.id===id){
-                        item.count--
-                    }
-                })
-           
-            },
-            remove(id){
-                this.books = this.books.filter(item => item.id != id)
+          finalPrice(price) {
+            return "￥" + price.toFixed(2);
+          },
+          addCount(id, event) {
+            this.books.map((item) => {
+              if (item.id === id) {
+                item.count++;
+              }
+            });
+          },
+          subCount(id, event) {
+            this.books.map((item) => {
+              if (item.id === id) {
+                item.count--;
+              }
+            });
+          },
+          remove(id) {
+            this.books = this.books.filter((item) => item.id != id);
+          },
 
-            },
-
-            liClick(index) {
-                this.currentIndex = index;
+          liClick(index) {
+            this.currentIndex = index;
           },
         },
       });

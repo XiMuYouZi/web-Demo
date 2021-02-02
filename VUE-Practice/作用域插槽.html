@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Vue组件</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <script src="vue.js"></script>
+    <style>
+      .title {
+        background-color: black;
+        color: white;
+      }
+      .subTitle {
+        color: salmon;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>父组件拿到子组件的数据，然后替换slot来展示</h2>
+
+    <div id="parent" v-cloak>
+      <h3>默认展示效果</h3>
+      <!-- 默认方式展示 -->
+      <cpn ref="child"></cpn>
+
+
+      <h3>父组件自己拿到数据自定义展示</h3>
+      <!-- 拿到子组件的数据自己展示 -->
+      <cpn>
+        <!-- 通过slot-socpe把子组件的插槽绑定到childSlot对象上面， -->
+        <template slot-scope="childSlot">
+          <!-- 然后就可以通过childSlot.data拿到子组件绑定好的language属性 -->
+            <span v-for="item in childSlot.data">
+              {{item}}***
+            </span>
+        </template>
+      </cpn>
+    </div>
+
+
+    <template id="child">
+      <div>
+        <!-- 把属性language绑定到data上面 -->
+        <slot :data="language">
+          <ul>
+            <li v-for="item in language">{{item}}</li>
+          </ul>
+        </slot>
+      </div>
+    </template>
+
+
+
+    <script>
+      const cpn = {
+        template: "#child",
+        props:{
+            cmessage:{
+                type:String,
+                default:"123131"
+            }
+        },
+        data() {
+          return {
+            language:["js","python","c++","swift","java"]
+          };
+        },
+        methods: {
+          showMsg(){
+            console.log("调用了子组件方法：dddddddddd")
+          }
+        },
+      };
+
+      const app = new Vue({
+        el: "#parent",
+        data: {
+          message: "fdsfasdfadsf",
+          movies: ["fsdfsfdf", "12131231", "1231221asdsd", "sdsdd"],
+        },
+        components: {
+          cpn,
+        },
+        methods: {
+          click(){
+            this.$refs.child.showMsg()
+            console.log(this.$refs.child.cmessage)
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
