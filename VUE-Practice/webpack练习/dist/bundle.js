@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "dist/";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
@@ -429,7 +429,7 @@ var urlEscape = __webpack_require__(7);
 var ___CSS_LOADER_URL___0___ = urlEscape(__webpack_require__(8));
 
 // Module
-exports.push([module.i, "body{\n    /* background-color: aquamarine; */\n    background-image: url(" + ___CSS_LOADER_URL___0___ + ");\n\n}", ""]);
+exports.push([module.i, "body{\r\n    /* background-color: aquamarine; */\r\n    background-image: url(" + ___CSS_LOADER_URL___0___ + ");\r\n\r\n}", ""]);
 
 
 

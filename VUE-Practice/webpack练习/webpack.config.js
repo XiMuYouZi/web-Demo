@@ -1,4 +1,5 @@
 const path = require('path')
+const htmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
     entry:"./src/main.js",
@@ -7,7 +8,17 @@ module.exports = {
         path:path.resolve(__dirname,'dist'),
         filename:'bundle.js',
         // 所有的url前面都加上前缀dist
-        publicPath:'dist/'
+        // publicPath:'dist/'
+    },
+    plugins:[
+        new htmlWebpackPlugin({
+            template:'template.html'
+        })
+    ],
+    
+    devServer:{
+        contentBase:'./dist',
+        inline:true
     },
     module: {
         rules: [
