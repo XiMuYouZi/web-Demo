@@ -28,8 +28,8 @@ export default {
 }
 </script>
 
-<style  scoped>
-    .title{
+<style lang="stylus" scoped>
+  .title{
         color:red
     }
 </style>

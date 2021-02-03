@@ -1,9 +1,11 @@
 <template>
   <div>
-    <h2 class="title">cpn b标题</h2>
+    <h2 class="title">cpn标题</h2>
     <p>cpn内容cpn内容cpn内容cpn内容cpn内容</p>
   </div>
 </template>
+
+
 
 <script>
 export default {
@@ -22,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.title {
-  color: green;
-}
+    .title {
+    color: green;
+    }
 </style>
