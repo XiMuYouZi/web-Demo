@@ -1,5 +1,6 @@
 // actions定义的都是异步操作
 export default {
+    
   asyncUpdateInfo(context, payload) {
     console.log(context);
     return new Promise((resolve, reject) => {
