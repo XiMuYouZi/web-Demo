@@ -2,43 +2,39 @@
   <div class="layout">
     <LayoutHeader />
     <div class="layout-body">
-      <div 
-        class="layout-menu"
-        v-show="isMenuShow"
-      >
+      <div class="layout-menu" v-show="isMenuShow">
         <LayoutMenu />
       </div>
       <div class="content">
-        <router-view :class="routerViewCls"/>
+        <router-view :class="routerViewCls" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import LayoutHeader from "./header"
-import LayoutMenu from "./menu"
-import { LayoutCenterNames } from "../router"
-import { mapState } from "@/store/helper/music"
+import LayoutHeader from "./header";
+import LayoutMenu from "./menu";
+import { LayoutCenterNames } from "../router";
+import { mapState } from "@/store/helper/music";
 
 export default {
-  data () {
-    return {}
+  data() {
+    return {};
   },
   components: {
     LayoutMenu,
-    LayoutHeader
+    LayoutHeader,
   },
   computed: {
     routerViewCls() {
-      
-      return LayoutCenterNames.find(name => name === this.$route.name)
+      return LayoutCenterNames.find((name) => name === this.$route.name)
         ? "router-view-center"
-        : ""
+        : "";
     },
-    ...mapState(["isMenuShow"])
-  }
-}
+    ...mapState(["isMenuShow"]),
+  },
+};
 </script>
 
 <style lang="scss" scoped>
