@@ -8,9 +8,8 @@
       <nav>
         <Menu></Menu>
       </nav>
-
       <main>
-        main
+        <Discovery></Discovery>
       </main>
     </center>
 
@@ -27,12 +26,19 @@ import Header from "@/views/header";
 import Menu from "@/views/menu";
 import MiniPlayer from "@/views/miniPlayer";
 import Const from "common-cpn/const";
+import Discovery from "@/views/discovery";
 
 export default {
   components: {
     Header,
     Menu,
     MiniPlayer,
+    Discovery,
+  },
+  data() {
+    return {
+      
+    }
   },
 };
 console.log(Const.a);
@@ -47,23 +53,23 @@ console.log(Const.a);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  
 
   header {
     width: 100vw;
-    height: 60px;
+    height: 50px;
     background-color: red;
   }
 
   footer {
     width: 100vw;
-    height: 100px;
+    height: 60px;
     background-color: blue;
   }
   center{
     flex: 1;
-    background-color: blueviolet;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -74,7 +80,6 @@ console.log(Const.a);
     }
     main{
       flex: 1;
-      background-color: coral;
       height: 100%;
     }
   }

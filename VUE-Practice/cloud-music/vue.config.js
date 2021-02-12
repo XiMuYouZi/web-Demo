@@ -8,7 +8,7 @@ module.exports ={
                 'css':'@/assets/css',
                 'business-cpn':'@/components/business',
                 'common-cpn':'@/components/common',
-                'view':'@/views',
+                'views':'@/views',
 
             }
         }
