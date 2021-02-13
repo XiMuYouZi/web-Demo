@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import 'normalize.css/normalize.css'
 import './plugins/element.js'
+import { LocalStorageKEY } from "common-cpn/const";
 
 Vue.config.productionTip = false
 

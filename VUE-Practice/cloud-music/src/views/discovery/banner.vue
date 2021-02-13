@@ -1,6 +1,6 @@
 <template lang="">
     <div class="banner">
-        <el-carousel :interval="2500" type="card" height="300px">
+        <el-carousel :interval="2500" type="card" height="200px">
             <el-carousel-item v-for="item in imgs" :key="item.encodeId">
                 <img :src="item.imageUrl" alt="" />
             </el-carousel-item>
@@ -26,9 +26,9 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 .banner {
-    height: 300px;
+    height: 200px;
     margin-bottom: 50px;
     margin-top: 20px;
     img {

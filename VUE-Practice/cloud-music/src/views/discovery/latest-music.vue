@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 #latest-music-container {
     height: 500px;
     display: grid;

@@ -1,3 +1,3 @@
-export default{
-    a:'sdsd'
+export const LocalStorageKEY = {
+    USERINFO:'USERINFO'
 }

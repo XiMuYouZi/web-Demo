@@ -21,7 +21,7 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 .recom-mv-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

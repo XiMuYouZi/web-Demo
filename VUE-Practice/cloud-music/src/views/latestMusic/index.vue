@@ -1,12 +1,12 @@
 <template>
   <div>
-    header
+    latestMusic
   </div>
 </template>
 
 <script>
 export default {
-  name: 'headers',
+  name: 'latestMusic',
   props: {
     msg: String
   }

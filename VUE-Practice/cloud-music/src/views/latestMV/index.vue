@@ -1,12 +1,12 @@
 <template>
   <div>
-    header
+    latestMV
   </div>
 </template>
 
 <script>
 export default {
-  name: 'headers',
+  name: 'latestMV',
   props: {
     msg: String
   }
