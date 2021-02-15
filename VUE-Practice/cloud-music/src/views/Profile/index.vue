@@ -8,18 +8,6 @@
             <img src="~img/avatar_default.svg" alt="" />
             <p>未登录</p>
         </div>
-
-          <!-- <el-dialog  title="注销登录" :visible.sync="dialogVisible" width="30%">
-                <span>要注销登录吗？</span>
-                <!-- <span slot="footer" class="dialog-footer">
-                    <el-button @click="dialogVisible = false">取 消</el-button>
-                    <el-button type="primary" @click="clickLogout">
-                      注销登录
-                    </el-button > -->
-                <!-- </span> -->
-            <!-- </el-dialog> --> 
-
-      
     </div>
 </template>
 
@@ -50,10 +38,12 @@ export default {
       }else{
           this.login()
       }
+
     },
     methods: {
         async login() {
-            let ret = await account.userProfile(316776160);
+            console.log("login122222");
+            let ret = await account.userProfile(316776161);
             let profile = ret.profile
             this.avatarUrl = profile.avatarUrl;
             this.nickName = profile.nickname;
@@ -90,6 +80,7 @@ export default {
     img {
         width: 40px;
         height: 40px;
+        border-radius: 20px;
     }
     p {
         margin-left: 10px;

@@ -9,7 +9,8 @@ export function request(config) {
     //拦截请求
     instance.interceptors.request.use(
         config => {
-            if (isLocalCacheEmpty(config)) {
+            if (isLocalCacheEmpty(getStorageKEY(config))) {
+                console.log(1111222);
                 return config;
             }
         },
@@ -21,10 +22,9 @@ export function request(config) {
     //拦截response
     instance.interceptors.response.use(
         response => {
-            // console.log(response);
             if (response.config.method === "get") {
                 localStorage.setItem(
-                    response.config.url,
+                    getStorageKEY(response.config),
                     JSON.stringify(response.data)
                 );
             }
@@ -38,12 +38,23 @@ export function request(config) {
     if (isLocalCacheEmpty(config)) {
         return instance(config);
     } else {
-        return Promise.resolve(JSON.parse(localStorage.getItem(config.url)));
+        return Promise.resolve(JSON.parse(localStorage.getItem(getStorageKEY(config))));
     }
+
+}
+
+function getStorageKEY(config) {
+    let params = ""
+    if (config.params !== undefined && Object.keys(config.params).length > 0) {
+        Object.keys(config.params).forEach(key => {
+            params = params+"&"+key+"="+config.params[key]
+        });
+    }
+    return config.url + params
 }
 
 function isLocalCacheEmpty(config) {
-    let value = JSON.parse(localStorage.getItem(config.url));
+    let value = JSON.parse(localStorage.getItem(getStorageKEY(config)));
     if (
         (Array.isArray(value) && value.length === 0) ||
         value === null ||

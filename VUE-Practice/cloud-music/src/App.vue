@@ -16,7 +16,6 @@
         </center>
 
         <footer>
-            
             <MiniPlayer></MiniPlayer>
         </footer>
     </div>
@@ -26,23 +25,19 @@
 import Header from "@/views/header";
 import Menu from "@/views/menu";
 import MiniPlayer from "@/views/miniPlayer";
-import Discovery from "@/views/discovery";
 
 export default {
     components: {
         Header,
         Menu,
-        MiniPlayer,
-        Discovery,
+        MiniPlayer
     },
     data() {
         return {
             titles: ["12313", "1233", "wddsd", "3ee"]
         };
     },
-    methods: {
-        
-    }
+    methods: {}
 };
 </script>
 
@@ -73,6 +68,7 @@ export default {
         position: fixed;
         left: 0;
         top: 93vh;
+        z-index: 100;
     }
     center {
         flex: 1;
@@ -95,7 +91,6 @@ export default {
             height: 100%;
             padding-left: 250px;
             min-width: 650px;
-
         }
     }
 }

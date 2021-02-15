@@ -99,9 +99,13 @@ export default {
 .menu-wrapper {
     // padding-left: 10px;
     text-align: left;
+    padding-left: 20px;
     padding-bottom: 130px;
     .menu-router {
         margin-top: 10px;
+    }
+    h3{
+        margin-left: 10px;
     }
     li {
         list-style-type: none;

@@ -1,7 +1,7 @@
 <template lang="">
     <div class="banner">
         <el-carousel :interval="2500" type="card" height="200px">
-            <el-carousel-item v-for="item in imgs" :key="item.encodeId">
+            <el-carousel-item v-for="item in imgs" :key="item.scm">
                 <img :src="item.imageUrl" alt="" />
             </el-carousel-item>
         </el-carousel>

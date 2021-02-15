@@ -27,7 +27,7 @@ export default {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1;
     height: 200px;
-     margin-bottom: 20px;
+    margin-bottom: 20px;
 
 }
 .recom-mv-item {

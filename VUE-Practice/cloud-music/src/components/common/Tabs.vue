@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="tabs-cpn-container">
+    <div :class="align">
         <ul class="tabs-cpn">
             <li
                 v-for="(title, index) in titles"
@@ -24,11 +24,15 @@ export default {
         },
         isShowIndicator: {
             type: Boolean,
-            default: false
+            default: true
         },
         isShowBgColor: {
             type: Boolean,
-            default: false
+            default: true
+        },
+        alignType: {
+            type: String,
+            default: "left"
         }
     },
     methods: {
@@ -44,7 +48,11 @@ export default {
                     return { "active-bg-color": this.currentIndex == index };
                 } else if (this.isShowIndicator && !this.isShowBgColor) {
                     return { "active-indicator": this.currentIndex == index };
-                } else if (!this.isShowIndicator && !this.isShowBgColor) {
+                }
+                else if (!this.isShowIndicator && this.isShowBgColor) {
+                    return { "active-bg-color": this.currentIndex == index };
+                }
+                 else if (!this.isShowIndicator && !this.isShowBgColor) {
                     return {
                         "active-no-indicator": this.currentIndex == index
                     };
@@ -54,23 +62,40 @@ export default {
                     };
                 }
             };
+        },
+        align() {
+            if (this.alignType === "left") {
+                return "tabs-cpn-container-align-left";
+            } else if (this.alignType === "right") {
+                return "tabs-cpn-container-align-right";
+            } else {
+                return "tabs-cpn-container-align-default";
+            }
         }
     },
     data() {
         return {
-            currentIndex: 0
+            currentIndex: 0,
         };
     }
 };
 </script>
 
 <style lang="less">
-.tabs-cpn-container {
-    height: 30px;
+.tabs-cpn-container-default {
+    overflow: hidden;
 }
-.tabs-cpn {
-            float:right;
+.tabs-cpn-container-align-left {
+    float: left;
+    overflow: hidden;
+}
+.tabs-cpn-container-align-right {
+    float: right;
+    overflow: hidden;
+}
 
+.tabs-cpn {
+    margin: 10px 0;
     li {
         padding: 5px 10px;
         margin: 0px 5px;
@@ -94,7 +119,7 @@ export default {
     border-bottom: none;
 }
 .active-bg-color {
-    background-color: rgb(230, 176, 168);
+    background-color: rgb(247, 216, 212);
     border-radius: 15px;
 }
 </style>
