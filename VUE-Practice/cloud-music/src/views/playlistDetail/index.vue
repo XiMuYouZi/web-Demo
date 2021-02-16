@@ -4,7 +4,11 @@
   </div>
 </template>
 
+
+
 <script>
+import * as playListAPI from 'network/playList'
+
 export default {
   name: 'playlistDetail',
   props: {
@@ -12,12 +16,34 @@ export default {
   },
   computed:{
     playListId(){
-      //this.$route当前的活跃路由,如果在user页面，那么活跃路由就是user
       return this.$route.params.playListId
     }
-  }
+  },
+  created() {
+    this.fetchPlaylistDetail(this.playListId)
+  },
+  activated() {
+            console.log(2222222333);
+
+  },
+   beforeRouteEnter (to, from, next) {
+    console.log("beforeRouteEnter===>user")
+    // 访问组件实例
+    next(vm => {
+        console.log(vm);
+    })
+  },
+  methods: {
+    fetchPlaylistDetail(id){
+      playListAPI.playlistDetail(id).then(res =>{
+        console.log(res);
+      })
+    }
+  },
 }
 </script>
+
+
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">

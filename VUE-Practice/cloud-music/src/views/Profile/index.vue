@@ -39,11 +39,12 @@ export default {
           this.login()
       }
 
+
     },
     methods: {
         async login() {
             console.log("login122222");
-            let ret = await account.userProfile(316776161);
+            let ret = await account.userProfile(316776160);
             let profile = ret.profile
             this.avatarUrl = profile.avatarUrl;
             this.nickName = profile.nickname;

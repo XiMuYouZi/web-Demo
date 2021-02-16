@@ -1,5 +1,6 @@
 import { request } from "./request";
 
+//我的歌单名称列表，包括自己创建的歌单和收藏的歌单
 export function myPlaylist(uid, limit = 1000) {
     return request({
         url: "/user/playlist",
@@ -11,7 +12,19 @@ export function myPlaylist(uid, limit = 1000) {
     });
 }
 
-export function playlistDetail(ids = []) {
+//歌单的详情信息，包括描述和所有的歌曲id
+export function playlistDetail(id) {
+    return request({
+        url: "/playlist/detail",
+        params: {
+            id
+        },
+        method: "get"
+    });
+}
+
+//歌曲的详情信息
+export function songlistDetail(ids = []) {
     return request({
         url: "/song/detail",
         params: {
@@ -67,3 +80,4 @@ export function categoryPlaylist(cat = "全部", offset=0,limit = 42) {
         method: "get"
     });
 }
+
