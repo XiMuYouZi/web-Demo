@@ -67,7 +67,7 @@ export default {
         background-color: rgb(21, 151, 43);
         position: fixed;
         left: 0;
-        top: 93vh;
+        top: calc(100% - 60px);
         z-index: 100;
     }
     center {

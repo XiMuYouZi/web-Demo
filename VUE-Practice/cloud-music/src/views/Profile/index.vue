@@ -44,7 +44,7 @@ export default {
     methods: {
         async login() {
             console.log("login122222");
-            let ret = await account.userProfile(316776160);
+            let ret = await account.userProfile(39253526);
             let profile = ret.profile
             this.avatarUrl = profile.avatarUrl;
             this.nickName = profile.nickname;

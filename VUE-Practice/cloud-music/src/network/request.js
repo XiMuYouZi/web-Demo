@@ -10,7 +10,6 @@ export function request(config) {
     instance.interceptors.request.use(
         config => {
             if (isLocalCacheEmpty(getStorageKEY(config))) {
-                console.log(1111222);
                 return config;
             }
         },

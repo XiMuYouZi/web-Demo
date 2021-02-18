@@ -24,7 +24,7 @@ export function playlistDetail(id) {
 }
 
 //歌曲的详情信息
-export function songlistDetail(ids = []) {
+export function songlistDetail(ids) {
     return request({
         url: "/song/detail",
         params: {

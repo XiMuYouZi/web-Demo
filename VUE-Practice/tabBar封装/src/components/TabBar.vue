@@ -17,8 +17,8 @@ export default {
         width: 100vw;
         height: 49px;
         display: flex;
-        /* justify-content: center; */
-        /* align-items: center; */
+        justify-content: center;
+        align-items: center;
         background-color: #f3f3f3;
         box-shadow: 0 -3px 5px rgba(100, 100, 100, 0.5);
         position: fixed;
