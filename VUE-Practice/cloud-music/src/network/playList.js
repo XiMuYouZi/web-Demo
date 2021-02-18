@@ -34,17 +34,7 @@ export function songlistDetail(ids) {
     });
 }
 
-export function comment(playlistID, pageSize = 20, offset = 0) {
-    return request({
-        url: "comment/playlist",
-        params: {
-            id: playlistID,
-            pageSize,
-            offset
-        },
-        method: "get"
-    });
-}
+
 
 //精品歌单列表
 export function highqualityPlaylist(cat = "全部", limit = 1) {

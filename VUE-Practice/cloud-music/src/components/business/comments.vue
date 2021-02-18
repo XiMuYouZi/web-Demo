@@ -25,21 +25,20 @@
                     :border="!$utils.isLast(index, comments)"
                 />
             </div>
-            <Pagination
+            <el-pagination
                 :current-page.sync="currentPage"
                 :page-size="PAGE_SIZE"
                 :total="total"
-                class="pagination"
+                class="comments-pagination"
+                layout="prev, pager, next"
                 @current-change="onPageChange"
             />
         </template>
-        <empty v-if="!shouldHotCommentShow && !shouldCommentShow"
-            >还没有评论哦~</empty
-        >
+        <div v-if="!shouldHotCommentShow && !shouldCommentShow">
+            还没有评论哦~
+        </div>
     </div>
 </template>
-
-
 
 <script>
 import {
@@ -47,9 +46,10 @@ import {
     getSongComment,
     getMvComment,
     getPlaylistComment
-} from "network/comments";
+} from "network/comment";
 import { getPageOffset, scrollInto } from "common-cpn/utils";
 import Comment from "./comment";
+import Loading from "common-cpn/loading";
 
 const SONG_TYPE = "song";
 const PLAYLIST_TYPE = "playlist";
@@ -144,7 +144,8 @@ export default {
         }
     },
     components: {
-        Comment
+        Comment,
+        Loading
     }
 };
 </script>
@@ -156,11 +157,15 @@ export default {
     .title {
         font-size: 16px;
         font-weight: 700;
-        margin-bottom: 4px;
-
+        margin: 60px 0 20px 40px;
+        text-align: left;
         .count {
             font-size: 14px;
         }
     }
+}
+
+.comments {
+    margin-bottom: 70px;
 }
 </style>

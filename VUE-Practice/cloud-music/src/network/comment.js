@@ -1,8 +1,11 @@
+import { request } from './request'
+
+
 export function getPlaylistComment(playlistId, pageSize = 20, offset = 0) {
     return request({
         url: "comment/playlist",
         params: {
-            id: playlistID,
+            id: playlistId,
             pageSize,
             offset
         },
@@ -12,13 +15,12 @@ export function getPlaylistComment(playlistId, pageSize = 20, offset = 0) {
 
 
 // 0: 歌曲， 1: mv，2: 歌单，3: 专辑，4: 电台，5: 视频
-export function getHotComment(id, pageSize = 20, offset = 0) {
+export function getHotComment(id, type = 2) {
   return request({
       url: "comment/hot",
       params: {
           id,
-          pageSize,
-          offset
+          type
       },
       method: "get"
   });

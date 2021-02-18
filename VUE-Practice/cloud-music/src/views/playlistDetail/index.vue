@@ -10,41 +10,51 @@
             @tab-click="tabClick"
         />
 
-        <el-table class="play-detail-table" :data="songs" style="width: 100%">
-            <el-table-column label="ID" prop="id" width="100px">
-            </el-table-column>
-            <el-table-column label="封面" width="140px" prop="img">
-                <template slot-scope="scope">
-                    <img
-                        class="play-detail-table-img"
-                        :src="scope.row.img"
-                        min-width="70"
-                        height="70"
-                    />
-                </template>
-            </el-table-column>
-            <el-table-column label="标题" prop="name">
-                <template slot-scope="scope">
-                    <span>{{ scope.row.name }}</span>
-                    <img
-                        v-show="isShowMV(scope.row.mvID)"
-                        class="play-detail-table-mv-ico"
-                        src="~img/mv_ico.svg"
-                        width="20"
-                        height="20"
-                        @click="playMV(scope.row.mvID)"
-                    />
-                </template>
-            </el-table-column>
-            <el-table-column label="歌手" width="180px" prop="artistName">
-            </el-table-column>
-            <el-table-column label="专辑" prop="album"> </el-table-column>
-            <el-table-column label="时长" idth="100px" prop="duration">
-            </el-table-column>
-        </el-table>
+        <div class="songlist" v-show="SONG_IDX === activeTab">
+            <el-table
+                class="play-detail-table"
+                :data="songs"
+                style="width: 100%"
+            >
+                <el-table-column label="ID" prop="id" width="100px">
+                </el-table-column>
+                <el-table-column label="封面" width="140px" prop="img">
+                    <template slot-scope="scope">
+                        <img
+                            class="play-detail-table-img"
+                            :src="scope.row.img"
+                            min-width="70"
+                            height="70"
+                        />
+                    </template>
+                </el-table-column>
+                <el-table-column label="标题" prop="name">
+                    <template slot-scope="scope">
+                        <span>{{ scope.row.name }}</span>
+                        <img
+                            v-show="isShowMV(scope.row.mvID)"
+                            class="play-detail-table-mv-ico"
+                            src="~img/mv_ico.svg"
+                            width="20"
+                            height="20"
+                            @click="playMV(scope.row.mvID)"
+                        />
+                    </template>
+                </el-table-column>
+                <el-table-column label="歌手" width="180px" prop="artistName">
+                </el-table-column>
+                <el-table-column label="专辑" prop="album"> </el-table-column>
+                <el-table-column label="时长" idth="100px" prop="duration">
+                </el-table-column>
+            </el-table>
+        </div>
 
         <div class="comments" v-show="COMMENT_IDX === activeTab">
-            <Comments :id="id" @update="onCommentsUpdate" type="playlist" />
+            <Comments
+                :id="playListId"
+                @update="onCommentsUpdate"
+                type="playlist"
+            />
         </div>
     </div>
 </template>
@@ -78,7 +88,7 @@ export default {
     },
     computed: {
         playListId() {
-            return this.$route.params.playListId;
+            return parseInt(this.$route.params.playListId);
         }
     },
     created() {
@@ -119,7 +129,8 @@ export default {
             this.tabs.splice(COMMENT_IDX, 1, `评论(${total})`);
         },
         tabClick(val) {
-            activeTab = val.index;
+            this.activeTab = val.index;
+            console.log(this.activeTab);
         },
         isShowMV(mvID) {
             return mvID > 0;
