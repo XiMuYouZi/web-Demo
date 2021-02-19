@@ -51,7 +51,7 @@
 import * as mvAPI from "network/mv";
 import MVList from "business-cpn/mvList";
 import Tabs from "common-cpn/Tabs";
-import { calcDurationStr } from "common-cpn/utils";
+import { fromatDurationStr } from "common-cpn/utils";
 
 const areas = ["全部", "内地", "港台", "欧美", "日本", "韩国"];
 const types = ["全部", "官方版", "原声", "现场版", "网易出品"];
@@ -108,7 +108,7 @@ export default {
                         cover: item.cover,
                         name: item.name,
                         artistName: item.artistName,
-                        duration: calcDurationStr(item.duration),
+                        duration: fromatDurationStr(item.duration),
                         playCount: item.playCount,
                         mvID: item.id
                     };

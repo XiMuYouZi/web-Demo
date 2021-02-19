@@ -1,6 +1,6 @@
 <template lang="">
     <div class="recom-mv-container">
-        <div class="recom-mv-item" v-for="item in recomMVs" :key="item.id">
+        <div class="recom-mv-item" v-for="item in recomMVs" :key="item.id" @click="goMV(item.id)">
             <img :src="item.picUrl" alt="" />
             <span>{{ item.name }}</span>
             <span>{{ item.artistName }}</span>
@@ -17,6 +17,12 @@ export default {
                 return [];
             }
         }
+    },
+    methods:{
+        goMV(id){
+            this.$router.push(`/mv/${id}`)
+        }
+
     }
 };
 </script>

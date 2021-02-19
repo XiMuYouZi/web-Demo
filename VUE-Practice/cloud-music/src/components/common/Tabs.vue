@@ -15,6 +15,7 @@
 
 <script>
 export default {
+    name:"Tabs",
     props: {
         titles: {
             type: Array,

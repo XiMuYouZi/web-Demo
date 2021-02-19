@@ -5,6 +5,7 @@ const latestMusic = ()=> import('views/latestMusic')
 const latestMV = ()=> import('views/latestMV')
 const recommendPlaylist = ()=> import('views/recommendPlaylist')
 const playlistDetail = ()=> import('views/playlistDetail')
+const mvDetail = ()=> import('views/mvDetail')
 
 Vue.use(VueRouter)
 
@@ -18,6 +19,12 @@ const routes = [
     path: '/discovery',
     name: 'discovery',
     component:discovery
+  },
+  {
+    path: '/mv/:id',
+    name: 'mvDetail',
+    component:mvDetail,
+    props: (route) =>  ({id: +route.params.id}),
   },
   {
     path: '/playlistDetail/:playListId',

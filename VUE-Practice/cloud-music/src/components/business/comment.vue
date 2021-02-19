@@ -19,7 +19,7 @@
             <div class="bottom">
                 <span class="date">{{ $utils.formatDate(comment.time) }}</span>
                 <div class="actions">
-                    <!-- <Icon :size="12" type="good" /> -->
+                    <Icon :size="12" type="good" />
                     {{ comment.likedCount }}
                 </div>
             </div>
@@ -29,6 +29,7 @@
 
 <script>
 export default {
+    name: "Comment",
     props: ["comment", "border"]
 };
 </script>
@@ -39,7 +40,7 @@ export default {
     display: flex;
     width: 100%;
     .avatar {
-        margin: 20px 10px 0 30px;
+        margin: 20px 10px 0 0px;
         img {
             width: 40px;
             height: 40px;
@@ -50,6 +51,12 @@ export default {
         flex: 1;
         text-align: left;
         margin-top: 10px;
+        .comment-text {
+            font-size: 0.8rem;
+        }
+        .username {
+            color: rgb(87, 130, 175);
+        }
         .replied {
             .comment-text {
                 background-color: rgb(230, 230, 230);

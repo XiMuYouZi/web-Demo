@@ -1,6 +1,6 @@
 <template>
     <div class="playListContainer">
-        <div class="playListItem" v-for="item in MVList" :key="item.mvID">
+        <div class="playListItem" v-for="item in MVList" :key="item.mvID" @click="goMV(item.mvID)">
             <img :src="item.cover" alt="" />
             <span>{{ item.name }}</span>
             <span class="playListItem-artist">{{ item.artistName }}</span>
@@ -20,7 +20,12 @@ export default {
                 return [];
             }
         }
-    }
+    },
+    methods: {
+         goMV(id){
+            this.$router.push(`/mv/${id}`)
+        }
+    },
 };
 </script>
 

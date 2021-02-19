@@ -4,10 +4,10 @@ import router from './router'
 import store from './store'
 import 'normalize.css/normalize.css'
 import './plugins/element.js'
-import * as utils from 'common-cpn/utils'
+import global from './plugins/global.js'
 
 Vue.config.productionTip = false
-Vue.prototype.$utils = utils
+Vue.use(global)
 
 new Vue({
   router,

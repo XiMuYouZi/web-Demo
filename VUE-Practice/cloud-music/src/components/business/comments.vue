@@ -57,6 +57,7 @@ const MV_TYPE = "mv";
 const PAGE_SIZE = 20;
 
 export default {
+    name:"Comments",
     props: {
         id: {
             type: Number,
@@ -157,7 +158,7 @@ export default {
     .title {
         font-size: 16px;
         font-weight: 700;
-        margin: 60px 0 20px 40px;
+        margin: 60px 0 20px 0px;
         text-align: left;
         .count {
             font-size: 14px;

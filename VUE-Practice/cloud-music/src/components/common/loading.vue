@@ -13,7 +13,10 @@
 <script>
 export default {
   name: "Loading",
-  props: ["loading"]
+  props: ["loading"],
+  methods: {
+    
+  },
 }
 </script>
 

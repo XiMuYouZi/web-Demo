@@ -27,7 +27,7 @@
 <script>
 import Tabs from "common-cpn/Tabs";
 import * as playList from "network/playList";
-import {calcDurationStr} from "common-cpn/utils"
+import {fromatDurationStr} from "common-cpn/utils"
 
 const tabs = ["全部", "欧美", "华语", "日本", "韩国"];
 
@@ -76,7 +76,7 @@ export default {
                         img: item.album.picUrl,
                         name: item.name,
                         album: item.album.name,
-                        duration:calcDurationStr(item.duration)  
+                        duration:fromatDurationStr(item.duration)  
                     };
                     this.tableData.push(tabRowData);
                 });

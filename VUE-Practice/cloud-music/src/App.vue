@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "~css/base.css";
+@import "~style/base.css";
 
 #app {
     display: flex;

@@ -62,9 +62,9 @@
 <script>
 import * as playListAPI from "network/playList";
 import Header from "./header";
-import Tabs from "common-cpn/Tabs";
-import { calcDurationStr } from "common-cpn/utils";
-import Comments from "business-cpn/comments";
+// import Tabs from "common-cpn/Tabs";
+import { fromatDurationStr } from "common-cpn/utils";
+// import Comments from "business-cpn/comments";
 
 const SONG_IDX = 0;
 const COMMENT_IDX = 1;
@@ -73,8 +73,8 @@ export default {
     name: "playlistDetail",
     components: {
         Header,
-        Tabs,
-        Comments
+        // Tabs,
+        // Comments
     },
 
     data() {
@@ -120,7 +120,7 @@ export default {
                     artistName: item.ar[0].name,
                     album: item.al.name,
                     mvID: item.mv,
-                    duration: calcDurationStr(item.dt)
+                    duration: fromatDurationStr(item.dt)
                 };
                 this.songs.push(tabRowData);
             });
@@ -130,13 +130,12 @@ export default {
         },
         tabClick(val) {
             this.activeTab = val.index;
-            console.log(this.activeTab);
         },
         isShowMV(mvID) {
             return mvID > 0;
         },
-        playMV(mvID) {
-            console.log(mvID);
+         playMV(id){
+            this.$router.push(`/mv/${id}`)
         }
     },
     watch: {
@@ -158,6 +157,10 @@ export default {
 .play-detail-table {
     margin-left: 20px;
     margin-bottom: 30px;
+}
+.comments{
+    margin-left: 20px;
+    padding-top: 10px;
 }
 .play-detail-table-mv-ico {
     width: 20px;
