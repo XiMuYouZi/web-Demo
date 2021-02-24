@@ -7,7 +7,7 @@
 
 <script>
 import Player from 'xgplayer';
-import { toRem } from "common-cpn/utils"
+import { toRem } from "@/utils"
 
 export default {
   name: "VideoPlayer",

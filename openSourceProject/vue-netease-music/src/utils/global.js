@@ -26,7 +26,6 @@ export default {
     requireComponent.keys().forEach(fileName => {
       const componentConfig = requireComponent(fileName)
       const componentName = componentConfig.default.name
-      console.log("componentConfig==>",componentConfig);
       if(componentName) {
         Vue.component(componentName, componentConfig.default || componentConfig)
       }

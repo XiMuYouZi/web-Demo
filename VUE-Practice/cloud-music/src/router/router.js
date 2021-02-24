@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 const discovery = ()=> import('views/discovery')
-const latestMusic = ()=> import('views/latestMusic')
-const latestMV = ()=> import('views/latestMV')
+const latestMusic = ()=> import('views/latestMusic/latestMusic')
+const latestMV = ()=> import('views/latestMV/latestMV')
 const recommendPlaylist = ()=> import('views/recommendPlaylist')
-const playlistDetail = ()=> import('views/playlistDetail')
-const mvDetail = ()=> import('views/mvDetail')
+const playlistDetail = ()=> import('views/playlistDetail/playlistDetail')
+const mvDetail = ()=> import('views/mvDetail/mvDetail')
 
 Vue.use(VueRouter)
 

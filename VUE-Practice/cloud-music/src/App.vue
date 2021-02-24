@@ -1,11 +1,11 @@
 <template>
     <div id="app">
         <header>
-            <Header></Header>
+            <!-- <Header></Header> -->
         </header>
 
         <center>
-            <nav>
+            <nav v-show="isMenuShow">
                 <Menu></Menu>
             </nav>
             <main>
@@ -18,26 +18,48 @@
         <footer>
             <MiniPlayer></MiniPlayer>
         </footer>
+        <BigPlayer />
+        <SidePlaylist />
     </div>
 </template>
 
 <script>
-import Header from "@/views/header";
-import Menu from "@/views/menu";
-import MiniPlayer from "@/views/miniPlayer";
+// import Header from "@/views/header";
+import Menu from "@/views/menu/menu";
+import MiniPlayer from "@/views/miniPlayer/miniPlayer";
+import BigPlayer from "@/views/bigPlayer/bigPlayer";
+import SidePlaylist from "@/views/sidePlaylist/sidePlaylist";
+import variablesWhite from "style/variables-white"
+import { mapState } from "@/store/helper/music";
+
 
 export default {
     components: {
-        Header,
         Menu,
-        MiniPlayer
+        MiniPlayer,
+        BigPlayer,
+        SidePlaylist
     },
     data() {
         return {
             titles: ["12313", "1233", "wddsd", "3ee"]
         };
     },
-    methods: {}
+    created() {
+        this.changeTheme()
+    },
+    computed:{
+        ...mapState(["isMenuShow"]),
+    },
+    methods: {
+        changeTheme() {
+            const theme = variablesWhite;
+            Object.keys(theme).forEach(key => {
+                const value = theme[key];
+                document.documentElement.style.setProperty(key, value);
+            });
+        }
+    }
 };
 </script>
 
@@ -53,18 +75,17 @@ export default {
 
     header {
         width: 100vw;
-        height: 50px;
+        height: 0px;
         background-color: red;
         position: fixed;
         left: 0;
         top: 0;
-        z-index: 100;
+        // z-index: 100;
     }
 
     footer {
         width: 100vw;
         height: 60px;
-        background-color: rgb(21, 151, 43);
         position: fixed;
         left: 0;
         top: calc(100% - 60px);
@@ -75,7 +96,7 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        margin-top: 50px;
+        margin-top: 0px;
         margin-bottom: 30px;
         nav {
             width: 250px;
@@ -83,7 +104,7 @@ export default {
             background-color: rgb(237, 237, 237);
             position: fixed;
             left: 0;
-            top: 50px;
+            top: 0px;
             overflow: scroll;
         }
         main {

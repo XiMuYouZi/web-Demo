@@ -49,7 +49,7 @@
       <Share :shareUrl="shareUrl" class="mode-item" v-show="hasCurrentSong" />
 
       <!-- 模式 -->
-      <el-popover placement="top" trigger="hover" width="160">
+      <el-popover placement="top" trigger="hover" width="260">
         <p>{{ playModeText }}</p>
         <Icon
           :size="20"

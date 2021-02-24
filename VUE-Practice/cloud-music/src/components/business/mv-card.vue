@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { isDefined } from "common-cpn/utils"
+import { isDefined } from "@/utils"
 export default {
   name:"MvCard",
   props: ["id", "img", "name", "author", "playCount", "duration"],

@@ -47,7 +47,7 @@ import {
     getMvComment,
     getPlaylistComment
 } from "network/comment";
-import { getPageOffset, scrollInto } from "common-cpn/utils";
+import { getPageOffset, scrollInto } from "@/utils";
 import Comment from "./comment";
 import Loading from "common-cpn/loading";
 
@@ -127,6 +127,8 @@ export default {
     },
     watch: {
         id: {
+            // 而immediate:true代表如果在 wacth 里声明了 firstName 之后，就会立即先去执行里面的handler方法，
+            // 如果为 false就跟我们以前的效果一样，不会在绑定的时候就执行。
             handler(newId) {
                 if (newId) {
                     this.currentPage = 1;

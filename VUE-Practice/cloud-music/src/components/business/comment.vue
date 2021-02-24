@@ -53,6 +53,7 @@ export default {
         margin-top: 10px;
         .comment-text {
             font-size: 0.8rem;
+            line-height: 1.2rem;
         }
         .username {
             color: rgb(87, 130, 175);

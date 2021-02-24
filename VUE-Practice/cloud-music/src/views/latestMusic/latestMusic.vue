@@ -27,7 +27,7 @@
 <script>
 import Tabs from "common-cpn/Tabs";
 import * as playList from "network/playList";
-import {fromatDurationStr} from "common-cpn/utils"
+import {fromatDurationStr} from "@/utils"
 
 const tabs = ["全部", "欧美", "华语", "日本", "韩国"];
 

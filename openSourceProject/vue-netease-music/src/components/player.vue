@@ -244,7 +244,7 @@ export default {
     },
     onClickPlaylist(id) {
       // 点击的歌单和当前打开的单页是同一个 直接关闭player
-      if (id === Number(this.$router.params.id)) {
+      if (id === Number(this.$route.params.id)) {
         this.setPlayerShow(false)
       } else {
         this.$router.push(`/playlist/${id}`)
@@ -387,7 +387,7 @@ $img-outer-d: 300px;
   z-index: $song-detail-z-index;
   overflow: hidden;
   overflow-y: auto;
-  transition: transform 0.5s;
+  transition: transform 3s;
 
   &.hide {
     transform: translateY(105%);

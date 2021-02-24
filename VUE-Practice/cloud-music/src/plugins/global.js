@@ -1,5 +1,5 @@
 
-import * as utils from 'common-cpn/utils'
+import * as utils from '@/utils'
 
 
 export default {

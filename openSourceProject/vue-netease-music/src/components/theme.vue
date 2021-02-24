@@ -1,6 +1,6 @@
 <template>
   <div class="theme">
-    <el-popover
+    <!-- <el-popover
       placement="top"
       width="230"
       trigger="click"
@@ -24,7 +24,7 @@
         slot="reference"
         type="skin"
       />
-    </el-popover>
+    </el-popover> -->
   </div>
 </template>
 

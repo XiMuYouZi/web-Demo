@@ -26,6 +26,7 @@ export function parseLyric (lrc) {
       }
     }
   }
+  console.log("解析歌词===>",lrcObj);
   return lrcObj
 }
 

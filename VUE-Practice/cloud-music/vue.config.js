@@ -9,7 +9,7 @@ module.exports = {
                 "business-cpn": "@/components/business",
                 "common-cpn": "@/components/common",
                 'views': "@/views",
-                'utils':"@/components/common/utils"
+                'utils':"@/utils"
             },
         },
     },

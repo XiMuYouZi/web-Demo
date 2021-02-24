@@ -71,3 +71,9 @@ export function categoryPlaylist(cat = "全部", offset=0,limit = 42) {
     });
 }
 
+
+export function getSimiPlaylists(id){
+    return request({
+        url: `/simi/playlist?id=${id}`,
+    });
+}

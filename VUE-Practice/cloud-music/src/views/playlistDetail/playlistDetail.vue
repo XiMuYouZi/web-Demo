@@ -15,8 +15,12 @@
                 class="play-detail-table"
                 :data="songs"
                 style="width: 100%"
+                @row-click="playSong"
             >
-                <el-table-column label="ID" prop="id" width="100px">
+                <el-table-column label="ID"  width="100px">
+                    <template slot-scope="scope">
+                        <span>{{ scope.$index + 1  }}</span>
+                    </template>
                 </el-table-column>
                 <el-table-column label="封面" width="140px" prop="img">
                     <template slot-scope="scope">
@@ -32,19 +36,23 @@
                     <template slot-scope="scope">
                         <span>{{ scope.row.name }}</span>
                         <img
-                            v-show="isShowMV(scope.row.mvID)"
+                            v-show="isShowMV(scope.row.mvId)"
                             class="play-detail-table-mv-ico"
                             src="~img/mv_ico.svg"
                             width="20"
                             height="20"
-                            @click="playMV(scope.row.mvID)"
+                            @click="playMV(scope.row.mvId)"
                         />
                     </template>
                 </el-table-column>
-                <el-table-column label="歌手" width="180px" prop="artistName">
+                <el-table-column label="歌手" width="180px" prop="artists[0].name">
                 </el-table-column>
-                <el-table-column label="专辑" prop="album"> </el-table-column>
+                <el-table-column label="专辑" prop="albumName"> </el-table-column>
                 <el-table-column label="时长" idth="100px" prop="duration">
+                      <template slot-scope="scope">
+                        <span>{{ durationStr(scope.row.duration)  }}</span>
+                        
+                    </template>
                 </el-table-column>
             </el-table>
         </div>
@@ -62,9 +70,8 @@
 <script>
 import * as playListAPI from "network/playList";
 import Header from "./header";
-// import Tabs from "common-cpn/Tabs";
-import { fromatDurationStr } from "common-cpn/utils";
-// import Comments from "business-cpn/comments";
+import { fromatDurationStr } from "@/utils";
+import { mapMutations, mapActions } from "@/store/helper/music";
 
 const SONG_IDX = 0;
 const COMMENT_IDX = 1;
@@ -72,7 +79,7 @@ const COMMENT_IDX = 1;
 export default {
     name: "playlistDetail",
     components: {
-        Header,
+        Header
         // Tabs,
         // Comments
     },
@@ -89,7 +96,8 @@ export default {
     computed: {
         playListId() {
             return parseInt(this.$route.params.playListId);
-        }
+        },
+        
     },
     created() {
         this.SONG_IDX = SONG_IDX;
@@ -97,11 +105,15 @@ export default {
     },
     methods: {
         async init() {
+            if (isNaN(this.playListId)) return
             const { playlist } = await playListAPI.playlistDetail(
                 this.playListId
             );
             this.playlist = playlist;
             let songids = [];
+            if (this.playlist === undefined || this.playlist === null){
+                return
+            }
             playlist.trackIds.map(item => {
                 songids.push(item.id);
             });
@@ -112,18 +124,18 @@ export default {
             let songidsStr = songids.join(",");
             this.songs.length = 0;
             const { songs } = await playListAPI.songlistDetail(songidsStr);
-            songs.map((item, index) => {
-                let tabRowData = {
-                    id: index + 1,
-                    img: item.al.picUrl,
-                    name: item.name,
-                    artistName: item.ar[0].name,
-                    album: item.al.name,
-                    mvID: item.mv,
-                    duration: fromatDurationStr(item.dt)
-                };
-                this.songs.push(tabRowData);
-            });
+            this.songs  = songs.map(({ id, name, mv, ar, al, dt }) =>
+                this.$utils.createSong({
+                    id,
+                    name,
+                    artists: ar,
+                    mvId: mv,
+                    albumName: al.name,
+                    img: al.picUrl,
+                    duration: dt
+                })
+            );
+           
         },
         onCommentsUpdate({ total }) {
             this.tabs.splice(COMMENT_IDX, 1, `评论(${total})`);
@@ -134,9 +146,18 @@ export default {
         isShowMV(mvID) {
             return mvID > 0;
         },
-         playMV(id){
-            this.$router.push(`/mv/${id}`)
-        }
+        playMV(id) {
+            this.$router.push(`/mv/${id}`);
+        },
+        playSong(song){
+            this.startSong(song)
+            this.setPlaylist(this.songs)
+        },
+        durationStr(duration){
+            return fromatDurationStr(duration)
+        },
+        ...mapMutations(["setPlaylist"]),
+        ...mapActions(["startSong"])
     },
     watch: {
         playListId: {
@@ -158,7 +179,7 @@ export default {
     margin-left: 20px;
     margin-bottom: 30px;
 }
-.comments{
+.comments {
     margin-left: 20px;
     padding-top: 10px;
 }

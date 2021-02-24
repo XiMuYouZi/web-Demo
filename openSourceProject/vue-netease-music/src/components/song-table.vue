@@ -136,6 +136,7 @@ export default {
   },
   methods: {
     onRowClick(song) {
+      console.log(song);
       this.startSong(song)
       this.setPlaylist(this.songs)
     },

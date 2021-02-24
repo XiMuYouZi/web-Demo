@@ -1,6 +1,6 @@
 <template>
-    <div class="menu-wrapper">
-        <Profile />
+    <div class="menu-wrapper" >
+        <Profile @fetchUserInfoSuccess="fetchMyPlayList"/>
         <section class="menu-router">
             <router-link to="/discovery" tag="li" active-class="active"
                 >发现音乐</router-link
@@ -48,9 +48,13 @@
 </template>
 
 <script>
-import Profile from "views/Profile";
+import Profile from "views/Profile/Profile";
 import * as playList from "network/playList";
-import { LocalStorageKEY } from "common-cpn/const";
+import {
+    mapActions as mapUserActions,
+    mapState as mapUserState,
+    mapGetters as mapUserGetters
+} from "@/store/helper/user";
 
 export default {
     name: "sideMenus",
@@ -61,10 +65,9 @@ export default {
         Profile
     },
     computed: {
-        isLogin() {
-            let ret = localStorage.getItem(LocalStorageKEY.USERINFO) !== null;
-            return ret;
-        }
+        ...mapUserState(["user"]),
+        ...mapUserGetters(["isLogin"]),
+
     },
     data() {
         return {
@@ -73,23 +76,19 @@ export default {
         };
     },
     created() {
-        this.fetchMyPlayList();
     },
     methods: {
         async fetchMyPlayList() {
-            if (this.isLogin) {
-                let profile = JSON.parse(
-                    localStorage.getItem(LocalStorageKEY.USERINFO)
-                );
-                let result = await playList.myPlaylist(profile.userId);
-                this.myCreatePlaylist = result.playlist.filter(
-                    item => item.creator.userId === profile.userId
-                );
-                this.myCollectPlaylist = result.playlist.filter(item => {
-                    return item.creator.userId !== profile.userId;
-                });
-            }
-        }
+            let profile =  this.user;
+            let result = await playList.myPlaylist(profile.userId);
+            this.myCreatePlaylist = result.playlist.filter(
+                item => item.creator.userId === profile.userId
+            );
+            this.myCollectPlaylist = result.playlist.filter(item => {
+                return item.creator.userId !== profile.userId;
+            });
+        },
+        ...mapUserActions(["login", "logout"])
     }
 };
 </script>
@@ -104,7 +103,7 @@ export default {
     .menu-router {
         margin-top: 10px;
     }
-    h3{
+    h3 {
         margin-left: 10px;
     }
     li {

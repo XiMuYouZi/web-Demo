@@ -1,6 +1,6 @@
 
 <script>
-import { toRem } from "common-cpn/utils"
+import { toRem } from "@/utils"
 export default {
   name: "Icon",
   props: {

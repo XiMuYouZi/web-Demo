@@ -26,6 +26,7 @@ export default {
     Playlist,
     Player,
   }
+  
 }
 </script>
 
