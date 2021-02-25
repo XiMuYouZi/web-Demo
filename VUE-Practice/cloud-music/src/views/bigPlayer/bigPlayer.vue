@@ -6,12 +6,12 @@
           <div class="left">
             <img
               class="play-bar-support"
-              src="@/assets/img/play-bar-support.png"
+              src="~img/play-bar-support.png"
             />
             <img
               :class="{ playing }"
               class="play-bar"
-              src="@/assets/img/play-bar.png"
+              src="~img/play-bar.png"
             />
             <div class="img-outer-border" ref="disc">
               <div
@@ -379,7 +379,7 @@ $img-outer-d: 300px;
 
 .player {
   position: fixed;
-  top: $header-height;
+  top: 0;
   bottom: $mini-player-height;
   left: 0;
   right: 0;
