@@ -1,7 +1,7 @@
 import { Controller, Get,Req,Post,HttpCode,Header,Redirect,Query,Body,Param} from '@nestjs/common';
 import { AppService } from './app.service';
 import { Request } from 'express';
-import {CreateCatDto} from "./dto"
+import {CreateCatDto} from "./cats/dto/dto"
 
 @Controller('/customers')
 export class AppController {
