@@ -1,7 +1,8 @@
-import { Controller, Get,Req,Post,HttpCode,Header,Redirect,Query,Body,Param} from '@nestjs/common';
+import { Controller, Get,Req,Post,HttpCode,Header,Redirect,Query,Body,Param,ForbiddenException} from '@nestjs/common';
 import { AppService } from './app.service';
 import { Request } from 'express';
 import {CreateCatDto} from "./cats/dto/dto"
+import { APP_FILTER } from '@nestjs/core';
 
 @Controller('/customers')
 export class AppController {
@@ -9,7 +10,7 @@ export class AppController {
 
   @Get('profile')
   getHello(@Req() request: Request): string {
-    console.log(request);
+    // console.log(request);
     return this.appService.getHello();
   }
 
@@ -35,16 +36,15 @@ export class AppController {
     }
   }
 
-  //http://127.0.0.1:3000/customers/id=1
-  // @Get(':id')
-  // findOne(@Param() params): string {
-  //   console.log("findOne");
-  //   console.log(params.id);
-  //   return `This action returns a #${params.id} cat`;
-  // }
+  //http://127.0.0.1:3000/customers/1
+  @Get('/:id')
+  findOne(@Param() params): string {
+    return `This action returns a #${JSON.stringify(params)} cat`;
+  }
 
   @Get('promise')
   async testPromise(): Promise<number []> {
+      throw new ForbiddenException()
       return [1,2,3,4];
   }
 

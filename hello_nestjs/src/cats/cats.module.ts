@@ -12,10 +12,10 @@ import { CatsService } from './cats.service';
   controllers: [CatsController],
   providers: [CatsService],
   //每个导入 CatsModule 的模块都可以访问 CatsService ，并且它们将共享相同的 CatsService 实例。
-  exports: [CatsService],
+  exports: [CatsService]
 })
 
 //提供者也可以注入到模块(类)中（例如，用于配置目的）：
 export class CatsModule {
-    constructor(private readonly catsService: CatsService) {}
+    // constructor(private readonly catsService: CatsService) {}
   }
