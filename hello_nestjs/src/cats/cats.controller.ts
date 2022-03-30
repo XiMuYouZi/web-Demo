@@ -1,8 +1,8 @@
 import { Controller, Get, Query, Post, Body, Put, Param, Delete,Res } from '@nestjs/common';
 import { CreateCatDto, UpdateCatDto, ListAllEntities } from './dto/dto';
 import { Response } from 'express';
-import { CatsService } from './cats.service';
-import { Cat } from './interfaces/cat.interface';
+// import { CatsService } from './cats.service';
+import  * as Cat from './interfaces/cat.interface';
 
 @Controller('cats')
 export class CatsController {
@@ -14,7 +14,7 @@ export class CatsController {
   }
 
   @Get()
-  async findAll(): Promise<Cat[]> {
+  async findAll(): Promise<Cat.Cat[]> {
     return this.catsService.findAll();
   }
 
