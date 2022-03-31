@@ -20,14 +20,30 @@ import * as Cat from "./interfaces/cat.interface";
 import { ForbiddenExceptionCustom } from "./forbidden.exception";
 import { HttpExceptionFilter } from "./http-exception.filter";
 import { JoiValidationPipe, ClassValidationPipe } from "./validate.pipe";
-import { ParseIntPipe} from './parse-int.pipe'
-
+import { ParseIntPipe } from './parse-int.pipe'
+import { User,UserPara } from '../cats/user.decorator';
+import { ValidationPipe } from "./validate.pipe";
 
 @Controller("cats")
 // @common.UseFilters(HttpExceptionFilter)
 export class CatsController {
-  constructor(private catsService: CatsService) {}
+  constructor(private catsService: CatsService) { }
 
+
+  @Get('userPipe')
+async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
+  console.log(user);
+}
+
+  @Get('userParaDecorator')
+  async userParaDecorator(@UserPara('firstName') firstName: string) {
+    console.log(`Hello ${firstName}`);
+  }
+
+  @Post('userDecorator')
+  async userDecorator(@User() user: CreateCatDto) {
+    console.log(`userDecorator---> ${JSON.stringify(user)}`);
+  }
   /**
    * // 主路径为 home
 @Controller("home")
@@ -59,7 +75,7 @@ export class CatsController {
    */
   //http://127.0.0.1:3000/cats/13123
   @Get(":findOne")
-  async findOne( @Param("findOne", ParseIntPipe) findOne) {
+  async findOne(@Param("findOne", ParseIntPipe) findOne) {
     return `findOne===> ${findOne}`;
   }
 

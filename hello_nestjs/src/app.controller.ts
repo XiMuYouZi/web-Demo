@@ -1,12 +1,14 @@
-import { Controller, Get,Req,Post,HttpCode,Header,Redirect,Query,Body,Param,ForbiddenException} from '@nestjs/common';
+import { Controller, Get, Req, Post, HttpCode, Header, Redirect, Query, Body, Param, ForbiddenException } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Request } from 'express';
-import {CreateCatDto} from "./cats/dto/dto"
+import { CreateCatDto } from "./cats/dto/dto"
 import { APP_FILTER } from '@nestjs/core';
 
 @Controller('/customers')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
+
+ 
 
   @Get('profile')
   getHello(@Req() request: Request): string {
@@ -16,7 +18,7 @@ export class AppController {
 
   @Post()
   create(): Object {
-    return {ssss:123,sfsf:'sfsdfdsf',fdfd:[1,2,3,4]};
+    return { ssss: 123, sfsf: 'sfsdfdsf', fdfd: [1, 2, 3, 4] };
   }
 
   @Get('a*bc')
@@ -31,7 +33,7 @@ export class AppController {
   @Redirect('https://www.baidu.com', 302)
   getDocs(@Query('version') version, @Body("sdsd") sd) {
     console.log(version);
-    if ( version == 5) {
+    if (version == 5) {
       return { url: 'https://docs.nestjs.com/v5/' };
     }
   }
@@ -43,9 +45,9 @@ export class AppController {
   }
 
   @Get('promise')
-  async testPromise(): Promise<number []> {
-      throw new ForbiddenException()
-      return [1,2,3,4];
+  async testPromise(): Promise<number[]> {
+    throw new ForbiddenException()
+    return [1, 2, 3, 4];
   }
 
   @Post('CreateCatDto')
