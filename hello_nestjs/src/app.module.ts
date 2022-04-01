@@ -12,7 +12,7 @@ import { CatsController } from './cats/cats.controller';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    // 多中间件顺序执行
+    // 多中间件，顺序执行
     // consumer.apply(cors(), helmet(), logger).forRoutes(CatsController);
 
     //函数中间件
