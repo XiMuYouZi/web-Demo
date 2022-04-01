@@ -28,20 +28,13 @@ import { RolesGuard } from "../roles.guard";
 import { LoggingInterceptor } from "./logging.interceptor";
 import { TransformInterceptor,ExcludeNullInterceptor,TimeoutInterceptor } from "./transform.interceptor";
 import { ErrorsInterceptor } from "./exception.interceptor";
-import { User,UserPara } from '../cats/user.decorator';
-import { ValidationPipe } from "./validate.pipe";
+
 
 @Controller("cats")
 @UseInterceptors(LoggingInterceptor,TransformInterceptor,ErrorsInterceptor,ExcludeNullInterceptor,TimeoutInterceptor)
 // @common.UseFilters(HttpExceptionFilter)
 export class CatsController {
-  constructor(private catsService: CatsService) { }
-
-
-  @Get('userPipe')
-async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
-  console.log(user);
-}
+  constructor(private catsService: CatsService) {}
 
   //http://127.0.0.1:3000/cats/RoleAdmin ，只有admin能访问
   @Post('RoleAdmin')
@@ -59,15 +52,6 @@ async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
     return `RoleGenerinc===> ${JSON.stringify(body)}`;
   }
 
-  @Get('userParaDecorator')
-  async userParaDecorator(@UserPara('firstName') firstName: string) {
-    console.log(`Hello ${firstName}`);
-  }
-
-  @Post('userDecorator')
-  async userDecorator(@User() user: CreateCatDto) {
-    console.log(`userDecorator---> ${JSON.stringify(user)}`);
-  }
   /**
    * // 主路径为 home
 @Controller("home")
@@ -99,7 +83,7 @@ async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
    */
   //http://127.0.0.1:3000/cats/13123
   @Get(":findOne")
-  async findOne(@Param("findOne", ParseIntPipe) findOne) {
+  async findOne( @Param("findOne", ParseIntPipe) findOne) {
     return `findOne===> ${findOne}`;
   }
 

@@ -22,14 +22,19 @@ import * as Cat from "./interfaces/cat.interface";
 import { ForbiddenExceptionCustom } from "./forbidden.exception";
 import { HttpExceptionFilter } from "./http-exception.filter";
 import { JoiValidationPipe, ClassValidationPipe } from "./validate.pipe";
+<<<<<<< HEAD
 import { ParseIntPipe} from './parse-int.pipe'
 import { Roles,Role } from "./roles.decorator";
 import { RolesGuard } from "../roles.guard";
 import { LoggingInterceptor } from "./logging.interceptor";
 import { TransformInterceptor,ExcludeNullInterceptor,TimeoutInterceptor } from "./transform.interceptor";
 import { ErrorsInterceptor } from "./exception.interceptor";
+
+=======
+import { ParseIntPipe } from './parse-int.pipe'
 import { User,UserPara } from '../cats/user.decorator';
 import { ValidationPipe } from "./validate.pipe";
+>>>>>>> 34c14fc70a4c2180d45ba99eab9a57399df3e4f5
 
 @Controller("cats")
 @UseInterceptors(LoggingInterceptor,TransformInterceptor,ErrorsInterceptor,ExcludeNullInterceptor,TimeoutInterceptor)
@@ -43,6 +48,7 @@ async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
   console.log(user);
 }
 
+<<<<<<< HEAD
   //http://127.0.0.1:3000/cats/RoleAdmin ，只有admin能访问
   @Post('RoleAdmin')
   @Roles(Role.ADMIN)
@@ -59,6 +65,7 @@ async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
     return `RoleGenerinc===> ${JSON.stringify(body)}`;
   }
 
+=======
   @Get('userParaDecorator')
   async userParaDecorator(@UserPara('firstName') firstName: string) {
     console.log(`Hello ${firstName}`);
@@ -68,6 +75,7 @@ async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
   async userDecorator(@User() user: CreateCatDto) {
     console.log(`userDecorator---> ${JSON.stringify(user)}`);
   }
+>>>>>>> 34c14fc70a4c2180d45ba99eab9a57399df3e4f5
   /**
    * // 主路径为 home
 @Controller("home")

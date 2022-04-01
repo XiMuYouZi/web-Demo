@@ -11,8 +11,6 @@ import {
   HttpException,
   HttpStatus,
   ForbiddenException,
-  UseGuards,
-  UseInterceptors
 } from "@nestjs/common";
 import * as common from "@nestjs/common";
 import { CreateCatDto, UpdateCatDto, ListAllEntities } from "./dto/dto";
@@ -22,17 +20,11 @@ import * as Cat from "./interfaces/cat.interface";
 import { ForbiddenExceptionCustom } from "./forbidden.exception";
 import { HttpExceptionFilter } from "./http-exception.filter";
 import { JoiValidationPipe, ClassValidationPipe } from "./validate.pipe";
-import { ParseIntPipe} from './parse-int.pipe'
-import { Roles,Role } from "./roles.decorator";
-import { RolesGuard } from "../roles.guard";
-import { LoggingInterceptor } from "./logging.interceptor";
-import { TransformInterceptor,ExcludeNullInterceptor,TimeoutInterceptor } from "./transform.interceptor";
-import { ErrorsInterceptor } from "./exception.interceptor";
+import { ParseIntPipe } from './parse-int.pipe'
 import { User,UserPara } from '../cats/user.decorator';
 import { ValidationPipe } from "./validate.pipe";
 
 @Controller("cats")
-@UseInterceptors(LoggingInterceptor,TransformInterceptor,ErrorsInterceptor,ExcludeNullInterceptor,TimeoutInterceptor)
 // @common.UseFilters(HttpExceptionFilter)
 export class CatsController {
   constructor(private catsService: CatsService) { }
@@ -42,22 +34,6 @@ export class CatsController {
 async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
   console.log(user);
 }
-
-  //http://127.0.0.1:3000/cats/RoleAdmin ，只有admin能访问
-  @Post('RoleAdmin')
-  @Roles(Role.ADMIN)
-  @UseGuards(RolesGuard)
-  RoleAdmin(@Body() body: String) {
-    return `RoleAdmin===> ${JSON.stringify(body)}`;
-  }
-
-    //http://127.0.0.1:3000/cats/RoleGenerinc ，admin、user都能访问能访问
-  @Post('RoleGenerinc')
-  @Roles(Role.ADMIN,Role.USER)
-  @UseGuards(RolesGuard)
-  RoleGenerinc(@Body() body: String) {
-    return `RoleGenerinc===> ${JSON.stringify(body)}`;
-  }
 
   @Get('userParaDecorator')
   async userParaDecorator(@UserPara('firstName') firstName: string) {
