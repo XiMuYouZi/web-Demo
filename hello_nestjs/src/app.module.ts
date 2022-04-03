@@ -4,13 +4,38 @@ import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware,logger } from './cats/logger.middleware';
 import { CatsController } from './cats/cats.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './cats/user.decorator';
+import { UsersModule } from './user/user.module';
+import { Connection } from 'typeorm';
+
 
 @Module({
-  imports: [CatsModule],
+  imports: [
+    CatsModule,
+    UsersModule,
+    TypeOrmModule.forRoot(
+      {
+    //   type: 'mysql',
+    //   host: 'localhost',
+    //   port: 3306,
+    //   username: 'root',
+    //   password: '476301176',
+    //   database: 'nest',
+    //   // entities: [UserEntity],
+    //   //设置autoLoadEntities属性为true来自动载入实体(forFeature设置的entity)
+      autoLoadEntities: true
+    //   synchronize: true,
+    }
+    ),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule implements NestModule {
+  constructor(private readonly connection: Connection) {}
+
   configure(consumer: MiddlewareConsumer) {
     // 多中间件，顺序执行
     // consumer.apply(cors(), helmet(), logger).forRoutes(CatsController);

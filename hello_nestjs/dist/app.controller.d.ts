@@ -10,6 +10,7 @@ export declare class AppController {
     getDocs(version: any, sd: any): {
         url: string;
     };
+    findOne(params: any): string;
     testPromise(): Promise<number[]>;
     CreateCatDto(createCatDto: CreateCatDto): string;
 }
