@@ -21,7 +21,6 @@ let AppController = class AppController {
         this.appService = appService;
     }
     getHello(request) {
-        console.log(request);
         return this.appService.getHello();
     }
     create() {
@@ -36,7 +35,11 @@ let AppController = class AppController {
             return { url: 'https://docs.nestjs.com/v5/' };
         }
     }
+    findOne(params) {
+        return `This action returns a #${JSON.stringify(params)} cat`;
+    }
     async testPromise() {
+        throw new common_1.ForbiddenException();
         return [1, 2, 3, 4];
     }
     CreateCatDto(createCatDto) {
@@ -75,6 +78,13 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "getDocs", null);
+__decorate([
+    (0, common_1.Get)('/:id'),
+    __param(0, (0, common_1.Param)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", String)
+], AppController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Get)('promise'),
     __metadata("design:type", Function),
