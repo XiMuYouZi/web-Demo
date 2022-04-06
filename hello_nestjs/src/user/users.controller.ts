@@ -4,10 +4,10 @@ import { UsersService } from './users.service';
 
 @common.Controller('/user')
 export class UserController {
-    constructor(private readonly usersService: UsersService) { }
+    // constructor(private readonly usersService: UsersService) { }
 
-    @common.Post("findAll")
-    findAll(): Promise<UserEntity[]> {
-        return this.usersService.findAll();
-    }
+    // @common.Post("findAll")
+    // findAll(): Promise<UserEntity[]> {
+    //     return this.usersService.findAll();
+    // }
 }

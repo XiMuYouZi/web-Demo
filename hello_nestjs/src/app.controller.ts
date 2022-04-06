@@ -1,14 +1,24 @@
-import { Controller, Get, Req, Post, HttpCode, Header, Redirect, Query, Body, Param, ForbiddenException } from '@nestjs/common';
+import { Controller, Get, Req, Post,Request, HttpCode, Header,UseGuards, Redirect, Query, Body, Param, ForbiddenException } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Request } from 'express';
+// import { Request } from 'express';
 import { CreateCatDto } from "./cats/dto/dto"
 import { APP_FILTER } from '@nestjs/core';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('/customers')
 export class AppController {
   constructor(private readonly appService: AppService) { }
 
- 
+  /*
+$ # POST to /auth/login
+$ curl -X POST http://localhost:3000/customers/auth/login -d '{"username": "john", "password": "changeme"}' -H "Content-Type: application/json"
+$ # result -> {"userId":1,"username":"john"}
+  */
+  @UseGuards(AuthGuard('local'))
+  @Post('auth/login')
+  async login(@Request() req) {
+    return req.user;
+  }
 
   @Get('profile')
   getHello(@Req() request: Request): string {

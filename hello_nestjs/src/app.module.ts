@@ -8,33 +8,35 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './cats/user.decorator';
 import { UsersModule } from './user/user.module';
 import { Connection } from 'typeorm';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
   imports: [
     CatsModule,
     UsersModule,
-    TypeOrmModule.forRoot(
-      {
-    //   type: 'mysql',
-    //   host: 'localhost',
-    //   port: 3306,
-    //   username: 'root',
-    //   password: '476301176',
-    //   database: 'nest',
-    //   // entities: [UserEntity],
-    //   //设置autoLoadEntities属性为true来自动载入实体(forFeature设置的entity)
-      autoLoadEntities: true
-    //   synchronize: true,
-    }
-    ),
+    // TypeOrmModule.forRoot(
+    //   {
+    // //   type: 'mysql',
+    // //   host: 'localhost',
+    // //   port: 3306,
+    // //   username: 'root',
+    // //   password: '476301176',
+    // //   database: 'nest',
+    // //   // entities: [UserEntity],
+    // //   //设置autoLoadEntities属性为true来自动载入实体(forFeature设置的entity)
+    //   autoLoadEntities: true
+    // //   synchronize: true,
+    // }
+    // ),
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 
 export class AppModule implements NestModule {
-  constructor(private readonly connection: Connection) {}
+  // constructor(private readonly connection: Connection) {}
 
   configure(consumer: MiddlewareConsumer) {
     // 多中间件，顺序执行
