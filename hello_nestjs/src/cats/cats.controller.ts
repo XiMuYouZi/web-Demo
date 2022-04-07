@@ -24,7 +24,7 @@ import { HttpExceptionFilter } from "./http-exception.filter";
 import { JoiValidationPipe, ClassValidationPipe } from "./validate.pipe";
 import { ParseIntPipe} from './parse-int.pipe'
 import { Roles,Role } from "./roles.decorator";
-import { RolesGuard } from "../roles.guard";
+import { RolesGuard } from "./roles.guard";
 import { LoggingInterceptor } from "./logging.interceptor";
 import { TransformInterceptor,ExcludeNullInterceptor,TimeoutInterceptor } from "./transform.interceptor";
 import { ErrorsInterceptor } from "./exception.interceptor";

@@ -9,6 +9,8 @@ import { User } from './cats/user.decorator';
 import { UsersModule } from './user/user.module';
 import { Connection } from 'typeorm';
 import { AuthModule } from './auth/auth.module';
+import { CaslModule } from './casl/casl.module';
+import { AuthzModule } from './authz/authz.module';
 
 
 @Module({
@@ -30,6 +32,8 @@ import { AuthModule } from './auth/auth.module';
     // }
     // ),
     AuthModule,
+    CaslModule,
+    AuthzModule,
   ],
   controllers: [AppController],
   providers: [AppService],
