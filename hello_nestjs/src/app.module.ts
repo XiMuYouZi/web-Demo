@@ -10,7 +10,7 @@ import { UsersModule } from './user/user.module';
 import { Connection } from 'typeorm';
 import { AuthModule } from './auth/auth.module';
 import { CaslModule } from './casl/casl.module';
-import { AuthzModule } from './authz/authz.module';
+import { ArticleModule } from './article/article.module';
 
 
 @Module({
@@ -33,7 +33,7 @@ import { AuthzModule } from './authz/authz.module';
     // ),
     AuthModule,
     CaslModule,
-    AuthzModule,
+    ArticleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
