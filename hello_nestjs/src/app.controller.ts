@@ -19,16 +19,62 @@ import { CreateCatDto } from "./cats/dto/dto";
 import { APP_FILTER } from "@nestjs/core";
 import { AuthGuard } from "@nestjs/passport";
 import { AuthService } from "./auth/auth.service";
+import {
+  ApiQuery,
+  ApiBody,
+  ApiTags,
+  getSchemaPath,
+  ApiHeader,
+  ApiResponse,
+  ApiCreatedResponse,
+  ApiForbiddenResponse,
+} from "@nestjs/swagger";
+import { UserEntity } from "./user/orm/user.entity";
 
+enum UserRole {
+  Admin = "Admin",
+  Moderator = "Moderator",
+  User = "User",
+}
 
+@ApiTags("customers")
 @Controller("/customers")
+@ApiHeader({
+  name: "X-MyHeader",
+  description: "Custom header",
+})
 export class AppController {
   constructor(
     private readonly appService: AppService,
     private readonly authService: AuthService
   ) {}
 
- 
+  @Get("swiggerApiQuery")
+  @ApiQuery({ name: "role", enum: UserRole, isArray: true })
+  @ApiResponse({
+    status: 202,
+    description: "The record has been successfully created222.",
+  })
+  @ApiCreatedResponse({
+    description: "The record has been successfully created.",
+    type: UserEntity,
+  })
+  @ApiForbiddenResponse({ description: "Forbidden." })
+  async swiggerApiQuery(@Query("role") role: UserRole = UserRole.User) {}
+
+  @ApiBody({
+    schema: {
+      type: "array",
+      items: {
+        type: "array",
+        items: {
+          type: "number",
+        },
+      },
+    },
+  })
+  @Get("swiggerApiBody")
+  async swiggerApiBody(@Body() coords: number[][]) {}
 
   /**
    *jwt介绍： https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html

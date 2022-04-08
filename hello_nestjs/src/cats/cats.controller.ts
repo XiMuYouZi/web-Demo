@@ -30,7 +30,9 @@ import { TransformInterceptor,ExcludeNullInterceptor,TimeoutInterceptor } from "
 import { ErrorsInterceptor } from "./exception.interceptor";
 import { User,UserPara } from '../cats/user.decorator';
 import { ValidationPipe } from "./validate.pipe";
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags('cats')
 @Controller("cats")
 @UseInterceptors(LoggingInterceptor,TransformInterceptor,ErrorsInterceptor,ExcludeNullInterceptor,TimeoutInterceptor)
 // @common.UseFilters(HttpExceptionFilter)
