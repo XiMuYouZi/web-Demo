@@ -32,16 +32,16 @@ export class CreateCatDto implements Cat {
   address: string[];
 
 
-@ApiProperty({
-  type: 'array',
-  items: {
-    oneOf: [
-      { $ref: getSchemaPath(UserEntity) },
-      { $ref: getSchemaPath(MessageEntity) },
-    ],
-  },
-})
-pets: Pet[];
+// @ApiProperty({
+//   type: 'array',
+//   items: {
+//     oneOf: [
+//       { $ref: getSchemaPath(UserEntity) },
+//       { $ref: getSchemaPath(MessageEntity) },
+//     ],
+//   },
+// })
+// pets: Pet[];
 
 }
 

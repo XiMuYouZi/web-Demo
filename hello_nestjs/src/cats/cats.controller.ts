@@ -12,11 +12,12 @@ import {
   HttpStatus,
   ForbiddenException,
   UseGuards,
-  UseInterceptors
+  UseInterceptors,
+  Req
 } from "@nestjs/common";
 import * as common from "@nestjs/common";
 import { CreateCatDto, UpdateCatDto, ListAllEntities } from "./dto/dto";
-import { Response } from "express";
+import { Response,Request} from "express";
 import { CatsService } from "./cats.service";
 import * as Cat from "./interfaces/cat.interface";
 import { ForbiddenExceptionCustom } from "./forbidden.exception";
@@ -34,7 +35,7 @@ import { ApiTags } from "@nestjs/swagger";
 
 @ApiTags('cats')
 @Controller("cats")
-@UseInterceptors(LoggingInterceptor,TransformInterceptor,ErrorsInterceptor,ExcludeNullInterceptor,TimeoutInterceptor)
+// @UseInterceptors(LoggingInterceptor,TransformInterceptor,ErrorsInterceptor,ExcludeNullInterceptor,TimeoutInterceptor)
 // @common.UseFilters(HttpExceptionFilter)
 export class CatsController {
   constructor(private catsService: CatsService) { }
@@ -70,40 +71,7 @@ async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
   async userDecorator(@User() user: CreateCatDto) {
     console.log(`userDecorator---> ${JSON.stringify(user)}`);
   }
-  /**
-   * // 主路径为 home
-@Controller("home")
-
-// 1. 固定路径
-// 可匹配到的访问路径：
-//   http://localhost:3000/home/greeting
-@Get("greeting")
-
-// 2. 通配符路径(通配符可以有 ?, +, * 三种)
-// 可匹配到的访问路径：
-//   http://localhost:3000/home/say_hi
-//   http://localhost:3000/home/say_hello
-//   http://localhost:3000/home/say_good
-//   ...
-@Get("say_*")
-
-// 3. 路径数组
-// 可匹配到的访问路径：匹配上面1和2里的所有路径
-@Get(["greeting", "say_*"])
-
-// 4. 带参路径
-// 可匹配到的访问路径：
-//   http://localhost:3000/home/greeting/hello
-//   http://localhost:3000/home/greeting/good-morning
-//   http://localhost:3000/home/greeting/xxxxx
-//   ...
-@Get("greeting/:words")
-   */
-  //http://127.0.0.1:3000/cats/13123
-  @Get(":findOne")
-  async findOne(@Param("findOne", ParseIntPipe) findOne) {
-    return `findOne===> ${findOne}`;
-  }
+ 
 
   @Get("HttpExceptionFilter")
   @common.UseFilters(HttpExceptionFilter)
@@ -112,24 +80,40 @@ async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
     throw new ForbiddenException();
   }
 
+  /*body 的JSON RAW数据{"name":"asfsadf","age":123,"breed":"sdfffsa","address":["sdfdsf","123123"]}可以通过验证
+  xxx-form-data会把数字转成字符串
+  */
   @Post("ClassValidationPipe")
   @common.UsePipes(ClassValidationPipe)
   async ClassValidationPipe(@Body() createCatDto: CreateCatDto) {
+    console.log("post ClassValidationPipe")
     this.catsService.create(createCatDto);
     return JSON.stringify(createCatDto)
   }
 
-  @Post("create")
+  @Post("JoiValidationPipe")
+  //方法级别管道
   @common.UsePipes(new JoiValidationPipe())
-  async create(@Body() createCatDto: CreateCatDto) {
+  //参数级别管道
+  async JoiValidationPipe(@Body(new JoiValidationPipe()) createCatDto: CreateCatDto) {
     console.log("create");
     this.catsService.create(createCatDto);
     // throw new ForbiddenExceptionCustom();
   }
 
-  @Get()
-  async findAll(): Promise<Cat.Cat[]> {
+  @Get("findAll")
+  async findAll(@Req() request: Request, @Res() response:Response): Promise<Cat.Cat[]> {
+    console.log("===>findAll");
+    console.dir(request)
+    console.dir(response)
     return this.catsService.findAll();
+  }
+  @Get("fetchReqRes")
+   fetchReqRes(@Req() request: Request, @Res() response:Response):string{
+    console.log("===>fetchReqRes");
+    console.dir(request.rawHeaders)
+    console.dir(response)
+    return "fetchReqRes"
   }
 
   @Get("findAll_exception")
@@ -166,5 +150,40 @@ async userPipe(@User(new ValidationPipe()) user: CreateCatDto) {
   @Get("findAll/express")
   findAll_express(@Res() res: Response) {
     res.status(200).json({ ansd: 12312, sffs: "sdfsf" });
+  }
+
+   /**
+   * // 主路径为 home
+@Controller("home")
+
+// 1. 固定路径
+// 可匹配到的访问路径：
+//   http://localhost:3000/home/greeting
+@Get("greeting")
+
+// 2. 通配符路径(通配符可以有 ?, +, * 三种)
+// 可匹配到的访问路径：
+//   http://localhost:3000/home/say_hi
+//   http://localhost:3000/home/say_hello
+//   http://localhost:3000/home/say_good
+//   ...
+@Get("say_*")
+
+// 3. 路径数组
+// 可匹配到的访问路径：匹配上面1和2里的所有路径
+@Get(["greeting", "say_*"])
+
+// 4. 带参路径
+// 可匹配到的访问路径：
+//   http://localhost:3000/home/greeting/hello
+//   http://localhost:3000/home/greeting/good-morning
+//   http://localhost:3000/home/greeting/xxxxx
+//   ...
+@Get("greeting/:words")
+   */
+  //http://127.0.0.1:3000/cats/13123
+  @Get(":findOne")
+  async findOne(@Param("findOne", ParseIntPipe) findOne) {
+    return `findOne===> ${findOne}`;
   }
 }
